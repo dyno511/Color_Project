@@ -15,7 +15,12 @@ urlpatterns = [
     # path("cp-admin/", APP.views.CheckLogin, name='CheckLogin'),
     # path("Login", APP.views.Login_POST, name='Login_POST'),
     # path("Login", APP.views.Login_POST, name='Login_POST'),
-    path("upAnh", APP.views.UpAnh, name='upAnh')
+    path("upAnh", APP.views.UpAnh, name='upAnh'),
+    path("chupAnh", APP.views.saveImg, name='chupAnh'),
+    
+    
+    
+    path('video_feed', APP.views.video_feed, name="video-feed")
     
     # # truyen
     # path("cp-admin/newTruyen", APP.views.newTruyen, name='newTruyen'),

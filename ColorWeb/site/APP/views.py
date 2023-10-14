@@ -12,15 +12,45 @@ from django.core.files.storage import FileSystemStorage
 from matplotlib import pyplot as plt
 import numpy as np
 from APP.Code.ChucNang import callListColor
+from APP.Code.LiveVideo import stream, save_image, create_color_variations
 
 
+from django.http import StreamingHttpResponse
 
+
+@csrf_exempt
+def video_feed(request):
+    return StreamingHttpResponse(stream(), content_type='multipart/x-mixed-replace; boundary=frame')
+
+
+@csrf_exempt
+def saveImg(request):
+    data = save_image()
+    if data != False:
+        path = data
+        listIMG = create_color_variations(path)
+        
+        arrs = callListColor(path)
+        arr = arrs[0]
+        listColor = arrs[1]
+        
+        print("listColor", listColor)
+        
+        data = {
+                'arr': arr,
+                'listIMG': listIMG,
+                'path': path,
+                'listColor': listColor
+            }
+        return JsonResponse(data)
+    
 @csrf_exempt
 def Index(request):
     return render(request, 'index.html')
 
 @csrf_exempt
 def Index2(request):
+    
     return render(request, 'index2.html')
 @csrf_exempt
 def UpAnh(request):
@@ -34,7 +64,7 @@ def UpAnh(request):
 
     path = settings.MEDIA_ROOT + '/image/'+ myfile
     
-    arr =callListColor(path)
+    arr = callListColor(path)
     
     data = {
             'arr': arr,
