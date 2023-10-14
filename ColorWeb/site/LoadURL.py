@@ -23,7 +23,7 @@ class BrowserWindow(QMainWindow):
         self.browser.setUrl(QUrl("http://localhost:8000/"))
 
         # Set the window properties
-        self.setWindowTitle("Web Wifi")
+        self.setWindowTitle("")
         # Adjust the window size as needed
         self.setGeometry(100, 100, 800, 600)
 
@@ -40,5 +40,4 @@ if __name__ == "__main__":
             window.showMaximized()  # Show the window in full-screen mode
             sys.exit(app.exec_())
         else:
-            time.sleep(1)
             continue

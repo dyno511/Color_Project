@@ -5,25 +5,13 @@ from joblib import load
 import time
 import os
 from collections import Counter
-import random
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from joblib import dump, load
 import numpy as np
 import matplotlib.pyplot as plt
 import re
-
-
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-from joblib import dump
 from PIL import Image
 import warnings
-from sklearn.neighbors import KNeighborsClassifier
+
 
 
 # Ignore scikit-learn warnings
@@ -94,6 +82,9 @@ def TaoBieuDo(listColor):
     # Chú thích số vào đầu cột biểu đồ
     for i, v in enumerate(values):
         plt.text(i, v, str(v), ha='center', va='bottom')
+
+    # Thêm tiêu đề cho biểu đồ
+    plt.title('Biểu Đồ Màu')
 
     # Generate a timestamp to use in the image filename
     timestamp = time.strftime("%Y%m%d%H%M%S")
@@ -233,9 +224,7 @@ def getClassesFromCSV(predicted_classes):
     for result in results:
         if result != None:
             final_results.extend(str(result))
-        
 
-        
     count = Counter(final_results)
 
     arrSUM = []
