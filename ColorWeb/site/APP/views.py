@@ -32,15 +32,19 @@ def saveImg(request):
         
         arrs = callListColor(path)
         arr = arrs[0]
-        listColor = arrs[1]
-        
-        print("listColor", listColor)
-        
+        listColor = arrs[1]        
+        ListThongtin = ""
+        print("listColor", arrs[2])
+        for iListColor in list(arrs[2]):
+            print(iListColor)
+            ListThongtin += str(iListColor) + '\n'
+    
         data = {
                 'arr': arr,
                 'listIMG': listIMG,
                 'path': path,
-                'listColor': listColor
+                'listColor': listColor,
+                'ListThongtin': ListThongtin
             }
         return JsonResponse(data)
     

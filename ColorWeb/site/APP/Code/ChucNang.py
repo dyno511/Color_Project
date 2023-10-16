@@ -24,6 +24,12 @@ arrColorLock = Lock()  # Add a lock for synchronization
 
 
 def callListColor(image):
+    global arrColor, arrColorLock
+    
+    arrColor = [0] * 360
+    arrColorLock = Lock()  # Add a lock for synchronization
+
+    # print(arrColor)
     arr = main(image)  # Assign the result to arrColor
     print("a")
     arrList = getClassesFromCSV(arr)
@@ -33,11 +39,11 @@ def callListColor(image):
     arrList = TaoBieuDo(arrList)
     print("c")
 
-    return [arr, arrList]
+    return [arr, arrList[0], arrList[1]]
 
 
 def TaoBieuDo(listColor):
-    print(listColor)
+    # print(listColor)
     translation_dict = {
         '0': 'RED',
         '1': 'ORANGE',
@@ -62,8 +68,11 @@ def TaoBieuDo(listColor):
 
     listColor = [{translation_dict[color]: value}
                  for color_dict in listColor for color, value in color_dict.items()]
+    
 
     colors = [list(item.keys())[0] for item in listColor]
+    
+    print("listColor", listColor)
 
     bar_colors = []  # Tạo một danh sách rỗng để lưu trữ màu sau khi chuyển đổi
     for color in colors:
@@ -84,7 +93,7 @@ def TaoBieuDo(listColor):
         plt.text(i, v, str(v), ha='center', va='bottom')
 
     # Thêm tiêu đề cho biểu đồ
-    plt.title('Biểu Đồ Màu')
+    # plt.title('Biểu Đồ Màu')
 
     # Generate a timestamp to use in the image filename
     timestamp = time.strftime("%Y%m%d%H%M%S")
@@ -101,12 +110,12 @@ def TaoBieuDo(listColor):
     plt.savefig(image_path)
 
     # Return the image path
-    return image_path
+    return image_path, listColor
 
 
 def getCodeColor(data):
     # Load the K-nearest neighbors model
-    loaded_model = load('knn_model_bwg.joblib')
+    loaded_model = load(os.getcwd()+'/knn_model_bwg.joblib')
     new_data = np.array([data])
     predicted_class = loaded_model.predict(new_data)[0]
 
@@ -131,21 +140,38 @@ def process_pixels_in_range(start_x, start_y, end_x, end_y, image):
 
 
 def process_pixel(x, y, image, arrColor):
-    pixel = image.getpixel((x, y))
-    if pixel[0] > 245 and pixel[1] > 245 and pixel[2] > 245:
-        return False
+    try:
+        # Xác định ngưỡng cho màu trắng và đen
+        white_threshold = 55  # Điểm số màu trắng
+        black_threshold = 30   # Điểm số màu đen
 
-    # Assuming you want the first component of the color
-    point = int(getCodeColor((pixel[0], pixel[1], pixel[2])))
+        pixel = image.getpixel((x, y))
+        
+        # Trích xuất các thành phần màu RGB
+        r, g, b = pixel
 
-    with arrColorLock:
-        arrColor[point - 1] = arrColor[point - 1] + 1
+        # Tính điểm số cho màu gần giống màu trắng hoặc đen
+        similarity_score = (r + g + b) // 3  # Điểm số trung bình
+
+        # Kiểm tra nếu pixel gần màu trắng hoặc đen
+        if similarity_score > white_threshold or similarity_score < black_threshold:
+            # Bỏ qua pixel này
+            return 0
+
+        # Assuming you want the first component of the color
+        point = int(getCodeColor((pixel[0], pixel[1], pixel[2])))
+
+        with arrColorLock:
+            arrColor[point - 1] += 1
+    except Exception as e:
+        print("LOI", e)
+        return 0
 
 
 def main(image):
     global arrColor  # Declare arrColor as a global variable
     image = Image.open(image)
-    image = image.resize((600, 600), Image.BILINEAR)
+    image = image.resize((600, 600))
     width, height = image.size
     total_pixels = width * height
     pixels_per_thread = 601
@@ -171,6 +197,8 @@ def main(image):
 
     for thread in threads:
         thread.join()
+        
+    # print(arrColor)
 
     return arrColor
 
@@ -195,11 +223,11 @@ def process_class_range(start, end, predicted_classes, result_list):
 
 
 def getClassesFromCSV(predicted_classes):
-    num_threads = 300  # Số luồng bạn muốn sử dụng
+    num_threads = 180  # Số luồng bạn muốn sử dụng
 
     # Chia công việc thành các phần
     class_count = len(predicted_classes)
-    # print(class_count)
+    print("class_count", class_count)
     chunk_size = class_count // num_threads
 
     threads = []

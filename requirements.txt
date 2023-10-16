@@ -1,0 +1,16 @@
+numpy
+tensorflow
+datetime
+decorator
+openpyxl
+scikit-learn
+comm
+rope
+onnx
+joblib
+requests
+django
+keyboard
+click
+pandas
+matplotlib

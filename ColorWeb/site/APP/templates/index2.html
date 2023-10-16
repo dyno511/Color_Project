@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>XỬ LÝ MÀU</title>
       <!-- Google Font: Source Sans Pro -->
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+      {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> {% endcomment %}
       <!-- Font Awesome -->
       <link rel="stylesheet" href="{% static 'theme/css/all.css' %}">
       <link rel="stylesheet" href="{% static 'theme/plugins/fontawesome-free/css/all.min.css' %}">
@@ -156,9 +156,10 @@
                            <label for="exampleInputFile">Process Data:</label>
                            <div class="row">
                               <div class="col-12">
-                                 <ul class="listColor" id="danh-sach-mau" style="display:none">
+                               
                                     <!-- JavaScript will add colors here -->
-                                 </ul>
+                                    <div id="ShowINFO"></div>
+                       
                               </div>
                            </div>
                         </div>
@@ -188,7 +189,7 @@
          <!-- /.card -->
       </section>
       <!-- jQuery -->
-      <div class="info d-flex justify-content-center" id="infoDiv"> <span class="infoDivCol" id="infoDivCol"></span><span id="infoTex"><span>
+      <div class="info d-flex justify-content-center" id="infoDiv" style="top: -999px ;border-radius: 5px; border: 1px solid #000000;"> <span class="infoDivCol" id="infoDivCol"></span><span id="infoTex"><span>
       </div>
       <div id="loading-container">
          <div class="loader"></div>
@@ -203,6 +204,7 @@
    });
    
    function LoadCamera() {
+    document.getElementById("ShowVideo").src = "./static/img/err.png";
    	// Lấy tham chiếu đến thẻ hình ảnh
    	var img = document.getElementById("ShowVideo");
    	// Đặt URL của video cần tải lên
@@ -215,7 +217,8 @@
    	document.getElementById("processImage4").src = "./static/img/err.png";
    	document.getElementById("processImage5").src = "./static/img/err.png";
    	document.getElementById("processImage6").src = "./static/img/err.png";
-   	document.getElementById("myChart").src = "./static/img/err.png";
+   	{% comment %} document.getElementById("myChart").src = "./static/img/err.png"; {% endcomment %}
+    
    }
 </script>
 <script>
@@ -2415,7 +2418,8 @@
       var txtSoLan = "";
      
       if (color.solan  !== undefined){
-           txtSoLan = "Energy Colors: ("+color.solan+")";;
+           txtSoLan = "("+color.solan+")"
+        document.getElementById("info").innerText = "Energy Color: ("+color.solan+")"
       }
    
       infoTex.innerText = txtSoLan;
@@ -2424,7 +2428,7 @@
      // infoDiv.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
    
    
-      document.getElementById("info").innerText = "Energy Colors: ("+color.solan+")";
+      
       document.getElementById('infocolor').style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
       
    }
@@ -2443,61 +2447,87 @@
       changeColor();
    })
    
-   for (let i = 0; i < totalColors; i++) {
-      const color = colors[i];
-      const colorDiv = document.createElement('div');
-      colorDiv.classList.add('color');
-      colorDiv.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
-      colorDiv.style.transform = `translate(-50%, -50%) rotate(${(i * angle)}rad) translate(150px)`;
-   
-      colorDiv.addEventListener('click', () => {
-          currentColorIndex = i;
-          changeColor();
-          // Đặt z-index cho màu vừa được chọn
-         // colorDiv.style.zIndex = 1;
-          // Đặt z-index cho các màu khác trở về giá trị mặc định (0)
-          colorDivs.forEach((div, index) => {
-              if (index !== i) {
-                  //div.style.zIndex = 0;
-              }
-          });
-      });
-   
-        colorDiv.addEventListener("mouseenter", () => {
-           infoDiv.style.display = "block";
-            infoDivCol.style.display = "block";
-       });
-   
-       colorDiv.addEventListener("mousemove", (e) => {
-           infoDiv.style.left = (e.clientX ) + "px";
-           let viTri = e.clientY - 100;
-           if (viTri <= 20){
-               viTri = e.clientY + 30;
-           }
-           infoDiv.style.top = (viTri) + "px";
-       });
-   
-       colorDiv.addEventListener("mouseleave", () => {
-           infoDiv.style.display = "none";
-            infoDivCol.style.display = "none";
-       });
-   
-       colorDiv.addEventListener('mouseover', () => {
-           currentColorIndex = i;
-           changeColor();
-           // Đặt z-index cho màu vừa được chọn
-           //colorDiv.style.zIndex = 1;
-           // Đặt z-index cho các màu khác trở về giá trị mặc định (0)
-           //colorDivs.forEach((div, index) => {
-          //     if (index !== i) {
-                  // div.style.zIndex = 0;
-           //    }
-         //  });
-       });
-   
-   
-      colorWheel.appendChild(colorDiv);
-   }
+for (let i = 0; i < totalColors; i++) {
+    const color = colors[i];
+    const colorDiv = document.createElement('div');
+    colorDiv.id = i;
+    colorDiv.classList.add('color');
+    colorDiv.style.backgroundColor = `rgb(${color.r}, ${color.g}, ${color.b})`;
+    colorDiv.style.transform = `translate(-50%, -50%) rotate(${(i * angle)}rad) translate(150px)`;
+
+ 
+    colorDiv.addEventListener('click', () => {
+        currentColorIndex = i;
+        changeColor();
+        // Đặt z-index cho màu vừa được chọn
+        // colorDiv.style.zIndex = 1;
+        // Đặt z-index cho các màu khác trở về giá trị mặc định (0)
+        colorDivs.forEach((div, index) => {
+            if (index !== i) {
+                //div.style.zIndex = 0;
+            }
+        });
+    });
+
+    colorDiv.addEventListener("mouseenter", () => {
+        infoDiv.style.display = "block";
+        infoDivCol.style.display = "block";
+    });
+
+    colorDiv.addEventListener("mousemove", (e) => {
+        infoDiv.style.left = (e.clientX ) + "px";
+        let viTri = e.clientY - 100;
+        if (viTri <= 20){
+            viTri = e.clientY + 30;
+        }
+        infoDiv.style.top = (viTri) + "px";
+    });
+
+    colorDiv.addEventListener("mouseleave", () => {
+        infoDiv.style.left = "-999px";
+        infoDiv.style.top = "-999px";
+        infoDiv.style.display = "none";
+        infoDivCol.style.display = "none";
+    });
+
+    colorDiv.addEventListener('mouseover', () => {
+        currentColorIndex = i;
+        changeColor();
+    });
+
+    colorDiv.addEventListener("touchstart", (e) => {
+        e.preventDefault(); // Ngăn chặn hành động mặc định của cảm ứng
+        infoDiv.style.display = "block";
+        infoDivCol.style.display = "block";
+        currentColorIndex = i; // Capture the correct value of i
+        changeColor();
+    });
+
+colorDiv.addEventListener("touchmove", (e) => {
+    e.preventDefault(); // Ngăn chặn hành động mặc định của cảm ứng
+    let touch = e.touches[0]; // Lấy thông tin về cảm ứng đầu tiên (thường là một ngón tay)
+    infoDiv.style.left = touch.clientX + "px";
+    let viTri = touch.clientY - 100;
+    if (viTri <= 20) {
+        viTri = touch.clientY + 30;
+    }
+    infoDiv.style.top = viTri + "px";
+
+    // Lấy thẻ tại vị trí x, y
+    let elementAtTouchPoint = document.elementFromPoint(touch.clientX, touch.clientY);
+    
+    // Kiểm tra xem thẻ có tồn tại không và lấy id của nó (nếu có)
+    if (elementAtTouchPoint) {
+        let elementId = elementAtTouchPoint.id;
+        currentColorIndex = elementId;
+        changeColor();
+    }
+});
+
+
+    colorWheel.appendChild(colorDiv);
+}
+
    // SCRIPT LOAD ẢNH
    var arrColor = [];
    
@@ -2522,8 +2552,8 @@
                // Kiểm tra nếu có dữ liệu màu mới trước khi thực hiện hành động tiếp theo
            if (data.arr && data.arr.length > 0) {
                // Xóa nội dung cũ của danh sách màu
-               var danhSachMau = document.getElementById("danh-sach-mau");
-               danhSachMau.innerHTML = "";
+              // var danhSachMau = document.getElementById("danh-sach-mau");
+              // danhSachMau.innerHTML = "";
    
                arrColor = data.arr;
                colors.forEach((color, index) => {
@@ -2541,12 +2571,12 @@
                            colorBox.id = "box-color";
                
                            var colorName = document.createElement("span");
-                           colorName.textContent = "Energy Colors: ("+color.solan+")";
+                           colorName.textContent = "("+color.solan+")" +" "+ "rgb(" + color.r + "," + color.g + "," + color.b + ")";
                
                            mauElement.appendChild(colorBox);
                            mauElement.appendChild(colorName);
                
-                           danhSachMau.appendChild(mauElement);
+                           //danhSachMau.appendChild(mauElement);
                        }
                    }
                });
@@ -2653,7 +2683,15 @@
                console.log("bieu do", data.listColor);
                document.getElementById("myChart").src = data.listColor.split("APP")[1];
                stopLoadingEffect();
-           }
+               
+
+               document.getElementById("ShowINFO").innerText = data.ListThongtin;
+           },
+            error: function(xhr, status, error) {
+            // Xử lý lỗi
+            alert("ERROR");
+             stopLoadingEffect();
+        }
        });
    };
 </script>
@@ -2704,6 +2742,7 @@
     document.getElementById("processImage4").src = "./static/img/err.png";
     document.getElementById("processImage5").src = "./static/img/err.png";
     document.getElementById("processImage6").src = "./static/img/err.png";
+    document.getElementById("ShowVideo").src = "./static/img/err.png";
    
    
 </script>
@@ -2728,9 +2767,9 @@
 </style>
 <style>
    body {
-   display: block;
-   overflow: auto;
-   /* Hiển thị thanh cuộn nếu cần */
+    display: block;
+    overflow: hidden;
+    /* Hiển thị thanh cuộn nếu cần */
    }
    .col,
    .col-1,

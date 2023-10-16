@@ -20,6 +20,13 @@ class BrowserWindow(QMainWindow):
         super().__init__()
 
         self.browser = QWebEngineView()
+        while True:
+            if CheckIsURl("http://localhost:8000/"):            
+                break
+            else:
+                continue
+
+
         self.browser.setUrl(QUrl("http://localhost:8000/"))
 
         # Set the window properties
@@ -33,11 +40,8 @@ class BrowserWindow(QMainWindow):
         self.browser.setStyleSheet("background-color: #f0f0f0;")
 
 if __name__ == "__main__":
-    while True:
-        if CheckIsURl("http://localhost:8000/"):            
-            app = QApplication(sys.argv)
-            window = BrowserWindow()
-            window.showMaximized()  # Show the window in full-screen mode
-            sys.exit(app.exec_())
-        else:
-            continue
+    app = QApplication(sys.argv)
+    window = BrowserWindow()
+    window.showMaximized()  # Show the window in full-screen mode
+    sys.exit(app.exec_())
+
