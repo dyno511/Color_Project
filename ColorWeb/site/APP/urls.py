@@ -8,7 +8,7 @@ urlpatterns = [
                
     path("", APP.views.Index2, name= 'index2') ,
 
-    path("upAnh", APP.views.UpAnh, name='upAnh'),
+
     path("chupAnh", APP.views.saveImg, name='chupAnh'),
     
     path('video_feed', APP.views.video_feed, name="video-feed")
