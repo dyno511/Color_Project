@@ -174,7 +174,8 @@ def main(image):
     image = image.resize((600, 600))
     width, height = image.size
     total_pixels = width * height
-    pixels_per_thread = 601
+    print("total_pixels", total_pixels)
+    pixels_per_thread = 1000
     print("pixels_per_thread", pixels_per_thread)
     num_threads = total_pixels // pixels_per_thread
     print("num_threads", num_threads)
