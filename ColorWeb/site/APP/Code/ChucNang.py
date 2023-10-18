@@ -47,22 +47,14 @@ def find_closest_color(pixel):
 
 
 def LoadNewGetColor(path):
-    output_path = 'xyLy.png'
 
     # Đọc tệp ảnh
     image = Image.open(path)
     image = image.resize((600, 600))
     # Sử dụng rembg để xoá nền ảnh
 
-
-    # Sử dụng rembg để xoá nền ảnh
     output = remove(image)
-
-    # Lưu ảnh đã xử lý
-    output.save(output_path)
-
-    image = cv2.imread(output_path)
-
+    image = np.array(output)
 
     # Hàm chuyển đổi BGR sang HSL
     # Khởi tạo từ điển color_counts với tất cả các khóa hue
