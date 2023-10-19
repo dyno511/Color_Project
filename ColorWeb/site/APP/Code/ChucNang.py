@@ -85,9 +85,11 @@ def callListColor(image):
     # arr = main(image)  # Assign the result to arrColor
     arr = LoadNewGetColor(image)
 
-    arrLists = TaoBieuDo(getClassesFromCSV(arr))
-  
-    return [arr, arrLists[0], arrLists[1]]
+    arrListPixel = getClassesFromCSV(arr)
+    
+    arrLists = TaoBieuDo(TinhNangLuongMau(arr))
+    
+    return [arr, arrLists[0], arrLists[1], arrListPixel]
 
 
 def TaoBieuDo(listColor):
@@ -170,7 +172,7 @@ def process_class_range(start, end, predicted_classes, result_list):
 
 
 def getClassesFromCSV(predicted_classes):
-    print(predicted_classes)
+    # print(predicted_classes)
 
     arrColor = [0] * 7
     for index, val in enumerate(predicted_classes):
@@ -181,5 +183,67 @@ def getClassesFromCSV(predicted_classes):
     arrSUM = []
     for i, index in enumerate(arrColor):
         arrSUM.append({i: index})
+        
+        
+    translation_dict = {
+            0: 'RED',
+            1: 'ORANGE',
+            2: 'YELLOW',
+            3: 'GREEN',
+            4: 'BLUE',
+            5: 'INDIGO',
+            6: 'PURPLE'
+        }
 
-    return arrSUM
+    listColor = [{translation_dict.get(color, color): value}
+                 for color_dict in arrSUM for color, value in color_dict.items()]
+
+    return listColor
+
+
+
+
+
+def getNameColor(number):
+    arr = ['RED', 'ORANGE', 'YELLOW', 'GREEN', 'BLUE', 'INDIGO', 'PURPLE']
+    return arr[number]
+    
+    
+def GetGiaTriNangLuongTheoClass(maColor):
+    import csv
+
+    # Open the CSV file
+    with open('ListNangLuong.csv', 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        # Define the columns you want to extract by name
+        columns_to_extract = ['RGB', 'RED', 'ORANGE', 'YELLOW',
+                              'GREEN', 'BLUE', 'INDIGO', 'PURPLE', 'name', 'class']
+
+        for row in reader:
+            if row['name'] == str(maColor):
+                # Extract the values for the specified columns
+                extracted_values = {col: row[col] for col in columns_to_extract}
+
+                # Do something with the extracted values
+                return extracted_values
+
+
+
+
+
+def TinhNangLuongMau(arrIn):
+    ListNangLuongColor = [0] * 7
+
+    for codeclass in range(7):
+        SumNangLuong = 0
+        SumPixel = 0
+        for index, val in enumerate(arrIn):
+            NangLuong = int(GetGiaTriNangLuongTheoClass(index + 1)[getNameColor(codeclass)])
+            SumNangLuong += NangLuong * val
+            SumPixel += val
+
+        ListNangLuongColor[codeclass] = {codeclass: SumNangLuong}
+
+    arrIn = []
+    return ListNangLuongColor

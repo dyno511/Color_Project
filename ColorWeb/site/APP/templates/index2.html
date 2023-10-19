@@ -158,7 +158,7 @@
                               <div class="col-12">
                                
                                     <!-- JavaScript will add colors here -->
-                                    <div id="ShowINFO"></div>
+                                    <div id="ShowINFO" class="scrollbar" style="height: 350px; overflow: auto;"></div>
                        
                               </div>
                            </div>
@@ -2665,7 +2665,7 @@ colorDiv.addEventListener("touchmove", (e) => {
                stopLoadingEffect();
                
 
-               document.getElementById("ShowINFO").innerText = data.ListThongtin;
+               document.getElementById("ShowINFO").innerHTML = data.ListThongtin;
            },
             error: function(xhr, status, error) {
             // Xử lý lỗi
@@ -2824,8 +2824,8 @@ colorDiv.addEventListener("touchmove", (e) => {
    height: fit-content;
    }
    .color-wheel {
-   width: 100px;
-   height: 100px;
+   width: 50px;
+   height: 50px;
    border-radius: 50%;
    padding-bottom: 32%;
    position: relative;
@@ -2834,8 +2834,8 @@ colorDiv.addEventListener("touchmove", (e) => {
    transform: translate(-50%, -50%);
    }
    .color {
-   width: 50px;
-   height: 50px;
+   width: 100px;
+   height: 100px;
    border-radius: 50%;
    position: absolute;
    transform: translate(-50%, -50%);
@@ -2907,4 +2907,47 @@ colorDiv.addEventListener("touchmove", (e) => {
     max-width: 100%;
     /* Đặt chiều rộng tối đa bằng 100% của phần tử cha */
     }
+    
+        /* Định dạng văn bản dạng code */
+        .code {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            color: #333;
+            display: inline;
+            /* Hoặc có thể sử dụng inline-block nếu cần */
+        }
+
+        
+            .scrollbar
+{
+
+
+	overflow-y: scroll;
+}
+
+
+/*
+ *  STYLE 3
+ */
+
+#ShowINFO::-webkit-scrollbar-track
+{
+     border-radius: 15px;
+	-webkit-box-shadow: inset 0 0 6px black;
+	background-color: #F5F5F5;
+}
+
+#ShowINFO::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#ShowINFO::-webkit-scrollbar-thumb
+{
+     border-radius: 55px;
+
+	background-color: black;
+}
+
 </style>

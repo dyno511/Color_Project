@@ -1,3 +1,4 @@
+from rembg import remove
 import cv2 as cv
 import datetime
 import cv2
@@ -37,24 +38,31 @@ def save_image():
 
 
 def create_color_variations(image_path, num_variations=6):
-
-    img = cv2.imread(image_path, cv.IMREAD_GRAYSCALE)
+    img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
     if img is None:
         return None
 
     imgList = []
 
-    imgList.append(image_path)
-
     image_directory = os.path.dirname(image_path)
 
-    for i in [cv.THRESH_BINARY, cv.THRESH_BINARY_INV, cv.THRESH_TRUNC, cv.THRESH_TOZERO, cv.THRESH_TOZERO_INV]:
+    variation_path = os.path.join(image_directory, f'variation_removeBack.jpg')
 
-        ret, variation = cv.threshold(img, 127, 255, i)
+    # Read the image data and pass it to the remove function
+    with open(image_path, "rb") as image_file:
+        image_data = image_file.read()
+        remove_result = remove(image_data)
+
+    with open(variation_path, "wb") as output_file:
+        output_file.write(remove_result)
+
+    imgList.append(variation_path)
+
+    for i in [cv2.THRESH_BINARY, cv2.THRESH_BINARY_INV, cv2.THRESH_TRUNC, cv2.THRESH_TOZERO, cv2.THRESH_TOZERO_INV]:
+        ret, variation = cv2.threshold(img, 127, 255, i)
         variation_path = os.path.join(image_directory, f'variation_{i}.jpg')
         cv2.imwrite(variation_path, variation)
-
         imgList.append(variation_path)
 
     return imgList

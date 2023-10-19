@@ -31,19 +31,42 @@ def saveImg(request):
         from APP.Code.ChucNang import callListColor
         arrs = callListColor(path)
         arr = arrs[0]
-        listColor = arrs[1]        
-        ListThongtin = ""
+        listColor = arrs[1] # nang luong
+        listPixel = arrs[3] # list color
+        
+        # sumEnergy = 0
 
+        ListThongtin = '<ul>'
+        ListThongtin += '<span class="code"><strong><h3>Color</h3></strong></span>'
+        for iPixel in listPixel:
+            ListThongtin += '<span class="code">Color' + \
+                str(iPixel) + ' Pixel</span><br>'
+            
+        ListThongtin += '<span class="code"><strong><h3>Energy</h3></strong></span>'
         for iListColor in list(arrs[2]):
- 
-            ListThongtin += str(iListColor) + '\n'
+            ListThongtin += '<span class="code">Energy ' + \
+                str(iListColor) + '</span><br>'
+
+            # Lấy danh sách các giá trị từ từ điển
+            values = list(iListColor.values())
+
+            # Lấy giá trị đầu tiên (trong trường hợp này, giá trị duy nhất)
+            value = values[0]
+            # sumEnergy += value
+
+        # ListThongtin += '<hr><h2><strong>Sum Energy ' + \
+        #     str(sumEnergy) + '</strong></h2>'
+        
+        ListThongtin += '</ul>'
+
+
     
         data = {
                 'arr': arr,
                 'listIMG': listIMG,
                 'path': path,
                 'listColor': listColor,
-                'ListThongtin': ListThongtin
+                'ListThongtin': ListThongtin.replace("}", "").replace("{", "")
             }
         return JsonResponse(data)
     
