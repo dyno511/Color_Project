@@ -50,7 +50,7 @@ def LoadNewGetColor(path):
 
     # Đọc tệp ảnh
     image = Image.open(path)
-    image = image.resize((600, 600))
+    image = image.resize((900, 900))
     # Sử dụng rembg để xoá nền ảnh
 
     output = remove(image)
@@ -92,7 +92,7 @@ def callListColor(image):
     return [arr, arrLists[0], arrLists[1], arrListPixel]
 
 
-def TaoBieuDo(listColor):
+def TaoBieuDo(listColor, title="Chart of Color's Energy",figsize=(11, 8)):
 
     translation_dict = {
         0: 'RED',
@@ -132,9 +132,12 @@ def TaoBieuDo(listColor):
                     item[1][0] / 255, item[1][1] / 255, item[1][2] / 255)
                 bar_colors.append(normalized_color)
 
+    plt.figure(figsize=figsize)
     plt.clf()  # Xóa biểu đồ cũ
     
     plt.bar(colors, values, color=bar_colors)
+    plt.title(title)  # Add the title
+    
 
     for i, v in enumerate(values):
         plt.text(i, v, str(v), ha='center', va='bottom')
@@ -146,7 +149,7 @@ def TaoBieuDo(listColor):
     image_path = os.path.join(image_dir, f'BieuDo_{timestamp}.png')
 
     plt.savefig(image_path)
-
+    
     del values
 
     return image_path, listColor
