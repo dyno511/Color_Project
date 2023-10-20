@@ -50,7 +50,7 @@ def LoadNewGetColor(path):
 
     # Đọc tệp ảnh
     image = Image.open(path)
-    image = image.resize((900, 900))
+    image = image.resize((600, 600))
     # Sử dụng rembg để xoá nền ảnh
 
     output = remove(image)
