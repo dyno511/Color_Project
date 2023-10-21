@@ -92,7 +92,7 @@ def callListColor(image):
     return [arr, arrLists[0], arrLists[1], arrListPixel]
 
 
-def TaoBieuDo(listColor, title="Chart of Color's Energy",figsize=(11, 8)):
+def TaoBieuDo(listColor, title="Chart of Color's Energy",figsize=(11, 5)):
 
     translation_dict = {
         0: 'RED',
