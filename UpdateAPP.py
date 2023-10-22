@@ -3,7 +3,7 @@ import zipfile
 import os
 
 # URL của tệp ZIP cần tải về
-zip_file_url = "http://api.duyvo26.xyz/viRoBot/2110793809/9416382725"
+zip_file_url = "http://api.duyvo26.xyz/Color_Project/2110793809/9416382725"
 
 # Thư mục cần giải nén và ghi đè
 target_directory = ""
