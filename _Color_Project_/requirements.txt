@@ -1,0 +1,14 @@
+comm
+joblib
+numpy
+decorator
+rope
+requests
+matplotlib
+click
+pandas
+openpyxl
+django
+datetime
+scikit-learn
+rembg
