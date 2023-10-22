@@ -99,20 +99,20 @@
                   <div style="height: 800px; margin-top: 20px;opacity:100%" class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
-                          <div class="card-body pt-0" style="margin-top:15px">
+                          <div class="card-body pt-0" style="margin-top:20px;margin-bottom:10px;">
                              
                              <div class="row">
                                 <div class="col-12" style="text-align: center!important;">  
                                   <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="LoadCamera()" type="button" class="btn btn-block btn-default">
-                                          <i class="fas fa-2x fa-sync-alt"></i>
+                                        <button type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/rotate-right-solid.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Reset Image</span>
+                                        <span class="btn-tooltip">Rotate Object </span>
                                       </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
                                           <img src="{% static 'theme/img/lightbulb-solid.svg' %}" width="36px" height="36px" />
@@ -120,7 +120,7 @@
                                         <span class="btn-tooltip">Light Off</span>
                                       </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
                                           <img src="{% static 'theme/img/light-on.svg' %}" width="36px" height="36px" />
@@ -128,39 +128,42 @@
                                         <span class="btn-tooltip">Light On</span>
                                       </div>
                                     </div>
-                                    <div class="col-2">
+                                    
+        
+                                  </div>
+                                
+                                  <div class="row" style="margin-top:10px">
+                                    <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/switch-off.png' %}" width="36px" height="36px" />
+                                        <button  type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/switch-off.png' %}" width="42px" height="42px" />
                                         </button>
                                         <span class="btn-tooltip">Power Off</span>
                                       </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button onclick="LoadCamera()"  type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/reset.svg' %}" width="42px" height="42px" />
+                                        </button>
+                                        <span class="btn-tooltip">Reset Image</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/switch-on.png' %}" width="36px" height="36px" />
+                                          <img src="{% static 'theme/img/switch-on.png' %}" width="42px" height="42px" />
                                         </button>
                                         <span class="btn-tooltip">Power On</span>
                                       </div>
                                     </div>
-                                    <div class="col-2">
-                                      <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/repeat-solid.svg' %}" width="32px" height="32px" />
-                                        </button>
-                                        <span class="btn-tooltip">Rotate Object </span>
-                                      </div>
-                                    </div>
-        
                                   </div>
-                                
-                                  
+
                                   <div class="row" style="margin-top:10px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/downCam.png' %}" width="32px" height="32px" />
+                                          <img src="{% static 'theme/img/downCam.png' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Move Down Camera</span>
                                       </div>
@@ -168,7 +171,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
-                                          <i class="fas fa-arrow-up"></i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
                                         </button>
                                         <span class="btn-tooltip">Move Forward Camera</span>
                                       </div>
@@ -176,7 +179,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/upCam.png' %}" width="32px" height="32px" />
+                                          <img src="{% static 'theme/img/upCam.png' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Move Up Camera</span>
                                       </div>
@@ -187,7 +190,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
-                                          <i class="fas fa-arrow-left"></i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 256 512"><style>svg{fill:#ffffff}</style><path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"/></svg>
                                         </button>
                                         <span class="btn-tooltip">Turn Left</span>
                                       </div>
@@ -195,7 +198,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default" onclick="ChupAnh()">
-                                          <img src="{% static 'theme/img/photo-camera.svg' %}" width="28px" height="28px" />
+                                          <img src="{% static 'theme/img/photo-camera.svg' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Capture</span>
                                       </div>
@@ -203,7 +206,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
-                                          <i class="fas fa-arrow-right"></i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 256 512"><style>svg{fill:#ffffff}</style><path d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"/></svg>
                                         </button>
                                         <span class="btn-tooltip">Turn Right</span>
                                       </div>
@@ -214,7 +217,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/lens-down.svg' %}" width="36px" height="36px" />
+                                          <img src="{% static 'theme/img/lens-down.svg' %}" width="42px" height="42px" />
                                         </button>
                                         <span class="btn-tooltip">Decrease Focal Length</span>
                                       </div>
@@ -222,7 +225,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
-                                          <i class="fas fa-arrow-down"></i>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
                                         </button>
                                         <span class="btn-tooltip">Move Backward</span>
                                       </div>
@@ -230,9 +233,37 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/lens-up.svg' %}" width="36px" height="36px" />
+                                          <img src="{% static 'theme/img/lens-up.svg' %}" width="42px" height="42px" />
                                         </button>
                                         <span class="btn-tooltip">Increase Focal Length</span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                  <div class="row" style="margin-top:10px">
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Setting</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/file-export-solid.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Export to files</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Company Informaton</span>
                                       </div>
                                     </div>
                                   </div>
@@ -245,7 +276,7 @@
                  </div>
                   <!--END DANH SÁCH CÁC NÚT CHỨC NĂNG-->
                   <!--TERMINAL-->
-                  <div style="height: 420px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 430px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
                            
@@ -261,14 +292,14 @@
                      </div>
                   </div>
                   <!--END TERMINAL-->
-                  <div style="height: 420px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 430px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
                            <div class="row">
                               <div class="col-12">
                                  <div class="form-group">
                                     
-                                    <img id="myChart" style="width: 100%;" /> 
+                                    <img id="myChart" style="width: 100%;margin-top:10px" /> 
                                  </div>
                               </div>
                            </div>
@@ -2805,7 +2836,7 @@ colorDiv.addEventListener("touchmove", (e) => {
   
   .btn-tooltip {
     visibility: hidden;
-    width: 110px;
+    width: 125px;
     background-color: #333;
     color: #fff;
     text-align: center;
