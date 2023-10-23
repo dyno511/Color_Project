@@ -73,6 +73,21 @@
                               <div class="input-group">
                                  <div style="height: 50px; width: 50px; margin-right: 10px;" id="infocolor">&nbsp;</div>
                                  <div id="info"></div>
+                                 <div  class="btn-tooltip-container2" style="display:none">
+                                 <button id="closeButton" type="button" class="btn bg-danger btn-sm" >
+                                  <i class="fas fa-times"></i>
+                                </button>
+                                <!--  nút tắt -->
+                                    <script>
+                                      var button = document.getElementById("closeButton");
+                                      button.addEventListener("click", function() {
+                                          if (window.qt) {
+                                              window.qt.closeApp();
+                                          }
+                                      });
+                                    </script>
+                                <span class="btn-tooltip2">Close</span>
+                              </div>
                               </div>
                            </div>
                         </div>
@@ -198,7 +213,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default" onclick="ChupAnh()">
-                                          <img src="{% static 'theme/img/photo-camera.svg' %}" width="36px" height="36px" />
+                                          <img src="{% static 'theme/img/photo-camera1.svg' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Capture</span>
                                       </div>
@@ -2766,7 +2781,11 @@ colorDiv.addEventListener("touchmove", (e) => {
    // Gọi hàm vẽ biểu đồ màu
    veBieuDoMau();
    
-</script>    
+</script>   
+
+
+
+
 <script>
    function ChupAnh() {
        startLoadingEffect();
@@ -2856,7 +2875,32 @@ colorDiv.addEventListener("touchmove", (e) => {
     opacity: 1;
   }
   
-
+  .btn-tooltip-container2 {
+    position: absolute; top: 0; right: 0;
+  }
+  
+  .btn-tooltip2 {
+    visibility: hidden;
+    width: 90px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 105%; /* Position the tooltip above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-top:25px
+  }
+  
+  .btn-tooltip-container2:hover .btn-tooltip2 {
+    visibility: visible;
+    opacity: 1;
+  }
 
 </style>
 <script>
