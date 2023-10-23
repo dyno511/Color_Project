@@ -37,7 +37,9 @@ class BrowserWindow(QMainWindow):
         # Remove the Maximize button
         # self.setWindowFlags(self.windowFlags() & ~Qt.WindowMaximizeButtonHint)
 
-
+        # Ẩn thanh tiêu đề của cửa sổ
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        
         # Add the browser widget to the main window
         self.setCentralWidget(self.browser)
         # Set the background color to white using CSS
