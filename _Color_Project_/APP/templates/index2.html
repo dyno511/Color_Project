@@ -21,17 +21,17 @@
    <body >
       <section class="content" >
          <!-- Default box -->
-         <div class="card card-solid" style="height:1900px;background-image: url({% static 'theme/img/back2.jpg' %}) !important">
+         <div class="card card-solid" style="height:1900px;">
             <div class="card-body pb-0">
-               <div class="row" style="margin-top:5px">
+               <div class="row" >
                   <!-- Upload và hiển thị hình ảnh -->
-                  <div style="height: 420px;opacity:100%" class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                  <div style="height: 420px;margin-top:10px " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                      <form id="upAnh" enctype="multipart/form-data">
                         <div class="card bg-light d-flex flex-fill">
-                           <div class="card-body pt-0" style="margin-top:5px">
+                           <div class="card-body pt-0" style="margin-top:7px">
                               
                               <div class="row">
-                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="382px" width="350px">
+                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="420px" width="420px">
                                     {% comment %}
                                     <input class="btn btn-block btn-info" style="margin-top:10px;" type="submit" value="Tải lên"> {% endcomment %} 
                                  </div>
@@ -42,21 +42,21 @@
                   </div>
                   <!--end Upload và hiển thị hình ảnh-->
                   <!--Danh sách màu  -->
-                  <div style="height: 425px;opacity:100%" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 435px;margin-top:10px" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
                           <div class="card-body pt-0" style="margin-top:5px">
                              
                              <div class="row">
                                 <div class="col-12" style="text-align: center!important;">  <div class="row" style="margin-top:15px">
-                                  <div class="col-4"> <img id="processImage1" src="" height="175px" width="175px"> </div>
-                                  <div class="col-4"> <img id="processImage2" src="" height="175px" width="175px"> </div>
-                                  <div class="col-4"> <img id="processImage3" src="" height="175px" width="175px"> </div>
+                                  <div class="col-4"> <img id="processImage1" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage2" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage3" src="" height="195px" width="195px"> </div>
                                </div>
-                               <div class="row" style="margin-top:20px">
-                                  <div class="col-4"> <img id="processImage4" src="" height="175px" width="175px"> </div>
-                                  <div class="col-4"> <img id="processImage5" src="" height="175px" width="175px"> </div>
-                                  <div class="col-4"> <img id="processImage6" src="" height="175px" width="175px"> </div>
+                               <div class="row" style="margin-top:21px">
+                                  <div class="col-4"> <img id="processImage4" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage5" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage6" src="" height="195px" width="195px"> </div>
                                </div>
                                 </div>
                              </div>
@@ -66,34 +66,20 @@
                  </div>
                   <!-- end Danh sách màu-->
                   <!--VÒNG MÀU  -->
-                  <div style="height: 425px;opacity:95%" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 440px;margin-top:10px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-header text-muted border-bottom-0">
                            <div class="form-group">
                               <div class="input-group">
                                  <div style="height: 50px; width: 50px; margin-right: 10px;" id="infocolor">&nbsp;</div>
                                  <div id="info"></div>
-                                 <div  class="btn-tooltip-container2" style="display:none">
-                                 <button id="closeButton" type="button" class="btn bg-danger btn-sm" >
-                                  <i class="fas fa-times"></i>
-                                </button>
-                                <!--  nút tắt -->
-                                    <script>
-                                      var button = document.getElementById("closeButton");
-                                      button.addEventListener("click", function() {
-                                          if (window.qt) {
-                                              window.qt.closeApp();
-                                          }
-                                      });
-                                    </script>
-                                <span class="btn-tooltip2">Close</span>
-                              </div>
+                                 
                               </div>
                            </div>
                         </div>
-                        <div class="card-body pt-0">
+                        <div class="card-body pt-0" style="margin-top:25px;margin-bottom:15px">
                            <div class="row">
-                              <div class="col-12" style="display: grid;">
+                              <div class="col-11" style="display: grid;">
                                  <div class="color-wheel" id="color-wheel" >
                                     <!-- JavaScript will add colors here -->
                                  </div>
@@ -102,8 +88,8 @@
                            <div class "row">
                               <div class="col-6"> </div>
                               <div class="input-group-append" style="max-width: 100%">
-                                 <button class="btn btn-block btn-outline-dark btn-sm" id="up-button" style="  margin-top: 10px;height: 55px;width: 65px; right: 0px;margin-right: auto;"><i class="fas fa-chevron-left"></i></button>
-                                 <button class="btn btn-block btn-outline-dark btn-sm" id="down-button" style="  margin-top: 10px;height: 55px;width: 65px; right: 0px;margin-left: auto;"><i class="fas fa-chevron-right"></i></button>
+                                 <button class="btn btn-block btn-outline-dark btn-sm" id="up-button" style="  margin-top: 30px;height: 55px;width: 65px; right: 0px;margin-right: auto;"><i class="fas fa-chevron-left"></i></button>
+                                 <button class="btn btn-block btn-outline-dark btn-sm" id="down-button" style="  margin-top: 30px;height: 55px;width: 65px; right: 0px;margin-left: auto;"><i class="fas fa-chevron-right"></i></button>
                               </div>
                            </div>
                         </div>
@@ -111,13 +97,13 @@
                   </div>
                   <!-- end wheel màu-->
                   <!--DANH SÁCH CÁC NÚT CHỨC NĂNG-->
-                  <div style="height: 800px; margin-top: 20px;opacity:100%" class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                  <div style="height: 510px; margin-top: 28px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
                           <div class="card-body pt-0" style="margin-top:20px;margin-bottom:10px;">
                              
-                             <div class="row">
-                                <div class="col-12" style="text-align: center!important;">  
+                             <div class="row" style="height: 500px; overflow: auto;">
+                                <div class="col-12" style="text-align: center!important;margin-top:10px;">  
                                   <div class="row">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
@@ -260,9 +246,9 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" />
+                                          <img src="{% static 'theme/img/video.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Setting</span>
+                                        <span class="btn-tooltip">Video Capture</span>
                                       </div>
                                     </div>
                                     <div class="col-4">
@@ -276,9 +262,72 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Setting</span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row" style="margin-top:10px">
+                                    <div class="col-3">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default" >
+                                          <img src="{% static 'theme/img/language.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Language</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-3">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default" >
+                                          <img src="{% static 'theme/img/Algorithm.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Algorithm</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-3">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default" >
+                                          <img src="{% static 'theme/img/color-space.svg' %}" width="36px" height="36px" />
+                                        </button>
+                                        <span class="btn-tooltip">Choose ColorSpace</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-3">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default" >
                                           <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Company Informaton</span>
+                                      </div>
+                                    </div>
+
+
+                                  </div>
+                                  <div class="row" style="margin-top:10px">
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default"style="display:none">
+                                          {% comment %} <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" /> {% endcomment %}
+                                        </button>
+                                        {% comment %} <span class="btn-tooltip">Setting</span> {% endcomment %}
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default"style="display:none">
+                                          {% comment %} <img src="{% static 'theme/img/file-export-solid.svg' %}" width="36px" height="36px" /> {% endcomment %}
+                                        </button>
+                                        {% comment %} <span class="btn-tooltip">Export to files</span> {% endcomment %}
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <div class="btn-tooltip-container">
+                                        <button type="button" class="btn btn-block btn-default"style="display:none">
+                                          {% comment %} <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" /> {% endcomment %}
+                                        </button>
+                                        {% comment %} <span class="btn-tooltip">Company Informaton</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
@@ -291,7 +340,7 @@
                  </div>
                   <!--END DANH SÁCH CÁC NÚT CHỨC NĂNG-->
                   <!--TERMINAL-->
-                  <div style="height: 430px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 420px;margin-top:28px; " class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
                            
@@ -299,7 +348,7 @@
                               <div class="col-12">
                                
                                     <!-- JavaScript will add colors here -->
-                                    <div id="ShowINFO" class="scrollbar" style="height: 350px; overflow: auto;margin-top:10px"></div>
+                                    <div id="ShowINFO" class="scrollbar" style="height: 510px; overflow: auto;margin-top:10px"></div>
                        
                               </div>
                            </div>
@@ -307,10 +356,10 @@
                      </div>
                   </div>
                   <!--END TERMINAL-->
-                  <div style="height: 430px;margin-top:20px;opacity:100%" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 420px;margin-top:28px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
-                           <div class="row">
+                           <div class="row"style="height: 510px; overflow: auto;margin-top:10px" >
                               <div class="col-12">
                                  <div class="form-group">
                                     
@@ -351,13 +400,13 @@
    	var videoUrl = "{% url 'video-feed' %}";
    	// Thay đổi thuộc tính 'src' của thẻ hình ảnh để tải video
    	img.src = videoUrl;
-   	document.getElementById("processImage1").src = "./static/img/err.png";
-   	document.getElementById("processImage2").src = "./static/img/err.png";
-   	document.getElementById("processImage3").src = "./static/img/err.png";
-   	document.getElementById("processImage4").src = "./static/img/err.png";
-   	document.getElementById("processImage5").src = "./static/img/err.png";
-   	document.getElementById("processImage6").src = "./static/img/err.png";
-   	{% comment %} document.getElementById("myChart").src = "./static/img/err.png"; {% endcomment %}
+   	document.getElementById("processImage1").src = "./static/img/err1.png";
+   	document.getElementById("processImage2").src = "./static/img/err1.png";
+   	document.getElementById("processImage3").src = "./static/img/err1.png";
+   	document.getElementById("processImage4").src = "./static/img/err1.png";
+   	document.getElementById("processImage5").src = "./static/img/err1.png";
+   	document.getElementById("processImage6").src = "./static/img/err1.png";
+   	{% comment %} document.getElementById("myChart").src = "./static/img/err1.png"; {% endcomment %}
     
    }
 </script>
@@ -2906,6 +2955,7 @@ colorDiv.addEventListener("touchmove", (e) => {
 <script>
    function startLoadingEffect() {
        document.getElementById("loading-container").style.display = "block";
+       document.getElementById("loading-container").style.backgroundColor = "white";
    }
    
    function stopLoadingEffect() {
@@ -2915,13 +2965,13 @@ colorDiv.addEventListener("touchmove", (e) => {
 <script>
    // Hàm này được gọi khi xảy ra lỗi khi tải hình ảnh
    // Bạn có thể đặt src của thẻ img thành một nguồn khác
-    document.getElementById("processImage1").src = "./static/img/err.png";
-    document.getElementById("processImage2").src = "./static/img/err.png";
-    document.getElementById("processImage3").src = "./static/img/err.png";
-    document.getElementById("processImage4").src = "./static/img/err.png";
-    document.getElementById("processImage5").src = "./static/img/err.png";
-    document.getElementById("processImage6").src = "./static/img/err.png";
-    document.getElementById("ShowVideo").src = "./static/img/err.png";
+    document.getElementById("processImage1").src = "./static/img/err1.png";
+    document.getElementById("processImage2").src = "./static/img/err1.png";
+    document.getElementById("processImage3").src = "./static/img/err1.png";
+    document.getElementById("processImage4").src = "./static/img/err1.png";
+    document.getElementById("processImage5").src = "./static/img/err1.png";
+    document.getElementById("processImage6").src = "./static/img/err1.png";
+    document.getElementById("ShowVideo").src = "./static/img/err1.png";
    
    
 </script>
