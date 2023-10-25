@@ -347,7 +347,7 @@
                   <!--END TERMINAL-->
                   
                     <!--VÒNG MÀU  -->
-                  <div style="height: 510px;margin-top:50px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 510px; margin-top:50px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                     <div class="card bg-light d-flex flex-fill">
                        <div class="card-header text-muted border-bottom-0">
                           <div class="form-group">
@@ -2643,19 +2643,52 @@
       const color = colors[currentColorIndex];
    
       var txtSoLan = "";
+      var dataHtml = "";
      
-      if (color.solan  !== undefined){
-           txtSoLan = color.solan
-        document.getElementById("info").innerText = "Energy Color Units: "+color.solan+""
-      }
-   
-      infoTex.innerText ="Energy Color Units: " +txtSoLan;
-   
-     infoDivCol.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
-     // infoDiv.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
-   
-   
+      if (color.solan !== undefined){
+          dataHtml += "Energy Color Units: "+color.solan+"\n";   
+          txtSoLan = color.solan;           
+
+           const originalArray = color.Energy;
+           console.log(originalArray);
+           const colorMap = {
+            0: 'RED',
+            1: 'ORANGE',
+            2: 'YELLOW',
+            3: 'GREEN',
+            4: 'BLUE',
+            5: 'INDIGO',
+            6: 'PURPLE'
+          };
+
+          const newArray = color.Energy.map(item => {
+            const key = Object.keys(item)[0];
+            const colorName = colorMap[key];
+            const value = item[key];
+            return `${colorName}: ${value}`;
+          });
+
+          console.log("newArray.length", newArray.length);
+          for (let i = 0; i < newArray.length; i++) {
+            dataHtml += newArray[i] + "\n"; // Concatenate values with newline character
+          }
+
+        document.getElementById("info").innerText = dataHtml;
       
+         document.getElementById("info").style.position = 'absolute';
+         document.getElementById("info").style.marginLeft = '100px';
+      
+      }else{
+         colorDiv.addEventListener("mousemove", function(event) {
+             infoDiv.style.left = (event.clientX ) + "px";
+            let viTri = event.clientY - 150;
+            infoDiv.style.top = (viTri) + "px";
+          });
+      }
+      infoTex.innerText = dataHtml;
+   
+      infoDivCol.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
+
       document.getElementById('infocolor').style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
       
    }
@@ -2702,11 +2735,8 @@ for (let i = 0; i < totalColors; i++) {
     });
 
     colorDiv.addEventListener("mousemove", (e) => {
-        infoDiv.style.left = (e.clientX ) + "px";
-        let viTri = e.clientY - 100;
-        if (viTri <= 20){
-            viTri = e.clientY + 30;
-        }
+        infoDiv.style.left = (e.clientX ) + 50 + "px";
+        let viTri = e.clientY - 300;
         infoDiv.style.top = (viTri) + "px";
     });
 
@@ -2733,12 +2763,9 @@ for (let i = 0; i < totalColors; i++) {
 colorDiv.addEventListener("touchmove", (e) => {
     e.preventDefault(); // Ngăn chặn hành động mặc định của cảm ứng
     let touch = e.touches[0]; // Lấy thông tin về cảm ứng đầu tiên (thường là một ngón tay)
-    infoDiv.style.left = touch.clientX + "px";
-    let viTri = touch.clientY - 100;
-    if (viTri <= 20) {
-        viTri = touch.clientY + 30;
-    }
-    infoDiv.style.top = viTri + "px";
+    infoDiv.style.left = (touch.clientX ) + 50 + "px";
+    let viTri = touch.clientY - 300;
+    infoDiv.style.top = (viTri) + "px";
 
     // Lấy thẻ tại vị trí x, y
     let elementAtTouchPoint = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -2768,7 +2795,10 @@ colorDiv.addEventListener("touchmove", (e) => {
                arrColor = data.arr;
                colors.forEach((color, index) => {
                    if (arrColor[index] !== undefined) {
-                       color["solan"] = arrColor[index];
+                       color["solan"] = arrColor[index][0];
+                       color["Energy"] = arrColor[index][1];
+
+
                        if (color.solan > 0) {
                            var mauElement = document.createElement("li");
                            mauElement.className = "listColor";

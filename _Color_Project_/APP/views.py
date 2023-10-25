@@ -1,19 +1,7 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
 from django.http import JsonResponse
-#  from APP.Code.Test import 
 from django.views.decorators.csrf import csrf_exempt
-from django.conf import settings
-import csv, io, base64, urllib, os, openpyxl, subprocess, datetime
-# from APP.Code.SQL_LoadModel import AddLoadModelSql, ShowLoadModel
-from django.core.files.storage import FileSystemStorage
-from matplotlib import pyplot as plt
-import numpy as np
-
 from APP.Code.LiveVideo import stream, save_image, create_color_variations
-
 from django.http import StreamingHttpResponse
 
 
@@ -42,20 +30,29 @@ def saveImg(request):
             ListThongtin += '<span class="code">Color' + \
                 str(iPixel) + ' Pixel</span><br>'
             
-        ListThongtin += '<span class="code"><strong><h3>Energy</h3></strong></span>'
-        for iListColor in list(arrs[2]):
-            ListThongtin += '<span class="code">Energy ' + \
-                str(iListColor) + '</span><br>'
 
-            # Lấy danh sách các giá trị từ từ điển
-            values = list(iListColor.values())
+        color_categories = ['RED', 'ORANGE', 'YELLOW',
+                            'GREEN', 'BLUE', 'INDIGO', 'PURPLE']
 
-            # Lấy giá trị đầu tiên (trong trường hợp này, giá trị duy nhất)
-            value = values[0]
-            # sumEnergy += value
+        # Loop through the color categories
+        for category in color_categories:
+            # Check if there are any elements for the current category
+            category_data = [i for i in arrs[2] if i[3] == category and i[2] > 0]
 
-        # ListThongtin += '<hr><h2><strong>Sum Energy ' + \
-        #     str(sumEnergy) + '</strong></h2>'
+            if category_data:
+                ListThongtin += '<span class="code"><strong><h3>Energy ' + \
+                    category + '</h3></strong></span>'
+
+                # Loop through the energy data and filter by the current category
+                for iListColor in category_data:
+                    ListThongtin += '<span class="code">Energy ' + \
+                        str(iListColor[0]) + ": " + str(iListColor[2]) + '</span><br>'
+
+        # Print or use ListThongtin as needed
+
+
+# Print or use ListThongtin as needed
+
         
         ListThongtin += '</ul>'
 

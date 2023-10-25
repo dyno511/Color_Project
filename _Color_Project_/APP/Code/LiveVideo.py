@@ -1,3 +1,4 @@
+from PIL import Image, ImageDraw
 from rembg import remove
 import cv2 as cv
 import datetime
@@ -36,9 +37,48 @@ def save_image():
     cv2.imwrite(saved_image, frame)
     return saved_image
 
+from PIL import Image, ImageDraw
+import os
+
+def overlay_red(image, opacity):
+    return overlay_color(image, (255, 0, 0), opacity)
+
+def overlay_green(image, opacity):
+    return overlay_color(image, (0, 255, 0), opacity)
+
+def overlay_blue(image, opacity):
+    return overlay_color(image, (0, 0, 255), opacity)
+
+def overlay_yellow(image, opacity):
+    return overlay_color(image, (255, 255, 0), opacity)
+
+def overlay_cyan(image, opacity):
+    return overlay_color(image, (0, 255, 255), opacity)
+
+def overlay_magenta(image, opacity):
+    return overlay_color(image, (255, 0, 255), opacity)
+
+def overlay_color(image, overlay_color, opacity):
+    # Create a transparent layer of the same size as the image
+    overlay = Image.new('RGBA', image.size, (0, 0, 0, 0))
+
+    # Create a drawing context on the overlay
+    draw = ImageDraw.Draw(overlay)
+
+    # Draw a filled rectangle with the overlay color and opacity
+    draw.rectangle([(0, 0), image.size], fill=(*overlay_color, opacity))
+
+    # Combine the original image and the overlay
+    result_image = Image.alpha_composite(image.convert('RGBA'), overlay)
+
+    # Convert the result image to RGB mode
+    result_image = result_image.convert('RGB')
+
+    return result_image
+
 
 def create_color_variations(image_path, num_variations=6):
-    img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    img = Image.open(image_path)
 
     if img is None:
         return None
@@ -47,22 +87,25 @@ def create_color_variations(image_path, num_variations=6):
 
     image_directory = os.path.dirname(image_path)
 
-    variation_path = os.path.join(image_directory, f'variation_removeBack.jpg')
-
-    # Read the image data and pass it to the remove function
-    with open(image_path, "rb") as image_file:
-        image_data = image_file.read()
-        remove_result = remove(image_data)
-
-    with open(variation_path, "wb") as output_file:
-        output_file.write(remove_result)
-
-    imgList.append(variation_path)
-
-    for i in [cv2.THRESH_BINARY, cv2.THRESH_BINARY_INV, cv2.THRESH_TRUNC, cv2.THRESH_TOZERO, cv2.THRESH_TOZERO_INV]:
-        ret, variation = cv2.threshold(img, 127, 255, i)
+    for i in range(1, num_variations + 1):
         variation_path = os.path.join(image_directory, f'variation_{i}.jpg')
-        cv2.imwrite(variation_path, variation)
+
+        if i == 1:
+            # Remove the background from the first image
+            # Assuming you have the 'remove' function for background removal
+            img = remove(img)
+            img.save(variation_path)
+        elif i == 2:
+            overlay_red(img, 128).save(variation_path)
+        elif i == 3:
+            overlay_green(img, 128).save(variation_path)
+        elif i == 4:
+            overlay_blue(img, 128).save(variation_path)
+        elif i == 5:
+            overlay_yellow(img, 128).save(variation_path)
+        elif i == 6:
+            overlay_cyan(img, 128).save(variation_path)
+
         imgList.append(variation_path)
 
     return imgList
