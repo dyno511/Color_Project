@@ -30,7 +30,7 @@
                         <div class="card bg-light d-flex flex-fill">
                            <div class="card-body pt-0" style="margin-top:7px">
                               
-                              <div class="row">
+                              <div class="row" >
                                  <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="420px" width="420px">
                                     {% comment %}
                                     <input class="btn btn-block btn-info" style="margin-top:10px;" type="submit" value="Tải lên"> {% endcomment %} 
@@ -65,44 +65,29 @@
                     </form>
                  </div>
                   <!-- end Danh sách màu-->
-                  <!--VÒNG MÀU  -->
-                  <div style="height: 440px;margin-top:10px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
-                     <div class="card bg-light d-flex flex-fill">
-                        <div class="card-header text-muted border-bottom-0">
-                           <div class="form-group">
-                              <div class="input-group">
-                                 <div style="height: 50px; width: 50px; margin-right: 10px;" id="infocolor">&nbsp;</div>
-                                 <div id="info"></div>
-                                 
-                              </div>
-                           </div>
-                        </div>
-                        <div class="card-body pt-0" style="margin-top:25px;margin-bottom:15px">
-                           <div class="row">
-                              <div class="col-11" style="display: grid;">
-                                 <div class="color-wheel" id="color-wheel" >
-                                    <!-- JavaScript will add colors here -->
-                                 </div>
-                              </div>
-                           </div>
-                           <div class "row">
-                              <div class="col-6"> </div>
-                              <div class="input-group-append" style="max-width: 100%">
-                                 <button class="btn btn-block btn-outline-dark btn-sm" id="up-button" style="  margin-top: 30px;height: 55px;width: 65px; right: 0px;margin-right: auto;"><i class="fas fa-chevron-left"></i></button>
-                                 <button class="btn btn-block btn-outline-dark btn-sm" id="down-button" style="  margin-top: 30px;height: 55px;width: 65px; right: 0px;margin-left: auto;"><i class="fas fa-chevron-right"></i></button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- end wheel màu-->
+                  <!-- CHART -->
+                  <div style="height: 420px;margin-top:10px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                    <div class="card bg-light d-flex flex-fill">
+                       <div class="card-body pt-0" style="margin-top:10px">
+                          <div class="row"style="height: 410px; overflow: auto;margin-top:10px" >
+                             <div class="col-12">
+                                <div class="form-group">
+                                   
+                                   <img id="myChart" style="width: 100%;margin-top:10px" /> 
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <!--END CHART -->
                   <!--DANH SÁCH CÁC NÚT CHỨC NĂNG-->
-                  <div style="height: 510px; margin-top: 28px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                  <div style="height: 520px; margin-top: 30px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
                           <div class="card-body pt-0" style="margin-top:20px;margin-bottom:10px;">
                              
-                             <div class="row" style="height: 500px; overflow: auto;">
+                             <div class="row" style="height: 520px; overflow: auto;">
                                 <div class="col-12" style="text-align: center!important;margin-top:10px;">  
                                   <div class="row">
                                     <div class="col-4">
@@ -340,7 +325,7 @@
                  </div>
                   <!--END DANH SÁCH CÁC NÚT CHỨC NĂNG-->
                   <!--TERMINAL-->
-                  <div style="height: 420px;margin-top:28px; " class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 420px;margin-top:30px; " class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
                            
@@ -348,7 +333,7 @@
                               <div class="col-12">
                                
                                     <!-- JavaScript will add colors here -->
-                                    <div id="ShowINFO" class="scrollbar" style="height: 510px; overflow: auto;margin-top:10px"></div>
+                                    <div id="ShowINFO" class="scrollbar" style="height: 530px; overflow: auto;margin-top:10px"></div>
                        
                               </div>
                            </div>
@@ -356,20 +341,38 @@
                      </div>
                   </div>
                   <!--END TERMINAL-->
-                  <div style="height: 420px;margin-top:28px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
-                     <div class="card bg-light d-flex flex-fill">
-                        <div class="card-body pt-0" style="margin-top:10px">
-                           <div class="row"style="height: 510px; overflow: auto;margin-top:10px" >
-                              <div class="col-12">
-                                 <div class="form-group">
-                                    
-                                    <img id="myChart" style="width: 100%;margin-top:10px" /> 
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                  
+                    <!--VÒNG MÀU  -->
+                  <div style="height: 510px;margin-top:30px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                    <div class="card bg-light d-flex flex-fill">
+                       <div class="card-header text-muted border-bottom-0">
+                          <div class="form-group">
+                             <div class="input-group">
+                                <div style="height: 70px; width: 70px; margin-right: 10px;" id="infocolor">&nbsp;</div>
+                                <div id="info"></div>
+                                
+                             </div>
+                          </div>
+                       </div>
+                       <div class="card-body pt-0" style="margin-top:25px;margin-bottom:35px;height:400px">
+                          <div class="row">
+                             <div class="col-11" style="display: grid;">
+                                <div class="color-wheel" id="color-wheel" >
+                                   <!-- JavaScript will add colors here -->
+                                </div>
+                             </div>
+                          </div>
+                          <div class "row">
+                             <div class="col-6"> </div>
+                             <div class="input-group-append" style="max-width: 100%">
+                                <button class="btn btn-block btn-outline-dark btn-sm" id="up-button" style="  margin-top: 50px;height: 55px;width: 65px; right: 0px;margin-right: auto;"><i class="fas fa-chevron-left"></i></button>
+                                <button class="btn btn-block btn-outline-dark btn-sm" id="down-button" style="  margin-top: 50px;height: 55px;width: 65px; right: 0px;margin-left: auto;"><i class="fas fa-chevron-right"></i></button>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <!-- end wheel màu-->
                </div>
             </div>
             <!-- /.card-body -->
@@ -380,9 +383,11 @@
       <!-- jQuery -->
       <div class="info d-flex justify-content-center" id="infoDiv" style="top: -999px ;border-radius: 5px; border: 1px solid #000000;"> <span class="infoDivCol" id="infoDivCol"></span><span id="infoTex"><span>
       </div>
-      <div id="loading-container">
-         <div class="loader"></div>
-      </div>
+        <div id="loading-container">
+          <div class="loader"></div>
+          <p>Loading...</p>
+         
+        </div>
       </div>
    </body>
 </html>
@@ -2604,11 +2609,11 @@
       var txtSoLan = "";
      
       if (color.solan  !== undefined){
-           txtSoLan = "("+color.solan+")"
-        document.getElementById("info").innerText = "Energy Color: ("+color.solan+")"
+           txtSoLan = color.solan
+        document.getElementById("info").innerText = "Energy Color Units: "+color.solan+""
       }
    
-      infoTex.innerText ="Energy Color: " +txtSoLan;
+      infoTex.innerText ="Energy Color Units: " +txtSoLan;
    
      infoDivCol.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
      // infoDiv.style.backgroundColor = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
@@ -2896,6 +2901,14 @@ colorDiv.addEventListener("touchmove", (e) => {
    0% { transform: translate(-50%, -50%) rotate(0deg); }
    100% { transform: translate(-50%, -50%) rotate(360deg); }
    }
+   #loading-container p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 580px;
+    color: #3498db; /* You can choose the color you prefer */
+ }
+ 
+
    .btn-tooltip-container {
     position: relative;
     display: inline-block;
@@ -3073,18 +3086,18 @@ colorDiv.addEventListener("touchmove", (e) => {
    height: fit-content;
    }
    .color-wheel {
-   width: 50px;
-   height: 50px;
+   width: 300px;
+   height: 300px;
    border-radius: 50%;
-   padding-bottom: 32%;
+   padding-bottom: 35%;
    position: relative;
-   top: 100%;
-   left: 60%;
+   top: 95%;
+   left: 78%;
    transform: translate(-50%, -50%);
    }
    .color {
-   width: 100px;
-   height: 100px;
+   width: 120px;
+   height: 120px;
    border-radius: 50%;
    position: absolute;
    transform: translate(-50%, -50%);
