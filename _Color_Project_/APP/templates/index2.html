@@ -17,6 +17,9 @@
       <!-- Theme style -->
       <link rel="stylesheet" href="{% static 'theme/css/adminlte.min.css'%}">
       <script src="{% static 'theme/plugins/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'theme/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      
+
    </head>
    <body >
       <section class="content" >
@@ -28,10 +31,10 @@
                   <div style="height: 420px;margin-top:10px " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                      <form id="upAnh" enctype="multipart/form-data">
                         <div class="card bg-light d-flex flex-fill">
-                           <div class="card-body pt-0" style="margin-top:7px">
+                           <div class="card-body pt-0" style="margin-top:10px;margin-bottom:0px;padding-left:14px;">
                               
                               <div class="row" >
-                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="420px" width="420px">
+                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="435px" width="435px">
                                     {% comment %}
                                     <input class="btn btn-block btn-info" style="margin-top:10px;" type="submit" value="Tải lên"> {% endcomment %} 
                                  </div>
@@ -45,15 +48,16 @@
                   <div style="height: 435px;margin-top:10px" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
-                          <div class="card-body pt-0" style="margin-top:5px">
+                          <div class="card-body pt-0" style="margin-top:10px;padding-left:7px;">
                              
                              <div class="row">
-                                <div class="col-12" style="text-align: center!important;">  <div class="row" style="margin-top:15px">
+                                <div class="col-12" style="text-align: center!important;">  
+                                <div class="row" style="margin-top:20px">
                                   <div class="col-4"> <img id="processImage1" src="" height="195px" width="195px"> </div>
                                   <div class="col-4"> <img id="processImage2" src="" height="195px" width="195px"> </div>
                                   <div class="col-4"> <img id="processImage3" src="" height="195px" width="195px"> </div>
                                </div>
-                               <div class="row" style="margin-top:21px">
+                               <div class="row" style="margin-top:31px">
                                   <div class="col-4"> <img id="processImage4" src="" height="195px" width="195px"> </div>
                                   <div class="col-4"> <img id="processImage5" src="" height="195px" width="195px"> </div>
                                   <div class="col-4"> <img id="processImage6" src="" height="195px" width="195px"> </div>
@@ -69,7 +73,7 @@
                   <div style="height: 420px;margin-top:10px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                     <div class="card bg-light d-flex flex-fill">
                        <div class="card-body pt-0" style="margin-top:10px">
-                          <div class="row"style="height: 410px; overflow: auto;margin-top:10px" >
+                          <div class="row"style="height: 430px; overflow: auto;margin-top:10px" >
                              <div class="col-12">
                                 <div class="form-group">
                                    
@@ -82,28 +86,29 @@
                  </div>
                  <!--END CHART -->
                   <!--DANH SÁCH CÁC NÚT CHỨC NĂNG-->
-                  <div style="height: 520px; margin-top: 30px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                  <div style="height: 520px; margin-top: 50px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
                           <div class="card-body pt-0" style="margin-top:20px;margin-bottom:10px;">
                              
-                             <div class="row" style="height: 520px; overflow: auto;">
+                             <div class="row" style="height: 500px; overflow: auto;">
                                 <div class="col-12" style="text-align: center!important;margin-top:10px;">  
-                                  <div class="row">
+                                 
+                                  <div class="row" style="margin-top:35px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
+                                        <button  type="button" class="btn btn-block btn-default">
                                           <img src="{% static 'theme/img/rotate-right-solid.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Rotate Object </span>
+                                        <span class="btn-tooltip">Rotate Object</span>
                                       </div>
                                     </div>
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/lightbulb-solid.svg' %}" width="36px" height="36px" />
+                                        <button onclick="LoadCamera()"  type="button" class="btn btn-block btn-default">
+                                          <img src="{% static 'theme/img/light-off.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Light Off</span>
+                                        <span class="btn-tooltip">Light off</span>
                                       </div>
                                     </div>
                                     <div class="col-4">
@@ -114,8 +119,6 @@
                                         <span class="btn-tooltip">Light On</span>
                                       </div>
                                     </div>
-                                    
-        
                                   </div>
                                 
                                   <div class="row" style="margin-top:10px">
@@ -281,8 +284,9 @@
                                     </div>
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#CPI" >
                                           <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" />
+                                          
                                         </button>
                                         <span class="btn-tooltip">Company Informaton</span>
                                       </div>
@@ -325,7 +329,7 @@
                  </div>
                   <!--END DANH SÁCH CÁC NÚT CHỨC NĂNG-->
                   <!--TERMINAL-->
-                  <div style="height: 420px;margin-top:30px; " class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 420px;margin-top:50px; " class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                      <div class="card bg-light d-flex flex-fill">
                         <div class="card-body pt-0" style="margin-top:10px">
                            
@@ -333,7 +337,7 @@
                               <div class="col-12">
                                
                                     <!-- JavaScript will add colors here -->
-                                    <div id="ShowINFO" class="scrollbar" style="height: 530px; overflow: auto;margin-top:10px"></div>
+                                    <div id="ShowINFO" class="scrollbar" style="height: 510px; overflow: auto;margin-top:10px"></div>
                        
                               </div>
                            </div>
@@ -343,7 +347,7 @@
                   <!--END TERMINAL-->
                   
                     <!--VÒNG MÀU  -->
-                  <div style="height: 510px;margin-top:30px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 510px;margin-top:50px" class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                     <div class="card bg-light d-flex flex-fill">
                        <div class="card-header text-muted border-bottom-0">
                           <div class="form-group">
@@ -354,7 +358,7 @@
                              </div>
                           </div>
                        </div>
-                       <div class="card-body pt-0" style="margin-top:25px;margin-bottom:35px;height:400px">
+                       <div class="card-body pt-0" style="margin-top:25px;margin-bottom:35px;height:380px">
                           <div class="row">
                              <div class="col-11" style="display: grid;">
                                 <div class="color-wheel" id="color-wheel" >
@@ -389,6 +393,38 @@
          
         </div>
       </div>
+      <!-- Modal -->
+<div class="modal fade" id="CPI" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><img src="{% static 'theme/img/circle-info-solid.svg' %}" width="28px" height="28px" style="margin-bottom: 5px"/>  Company Informaton</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 style="text-align:center;">ADVANCED HIGH TECHNOLOGY ONE MEMBER LIMITED LIABILITY COMPANY</h4> <p style="text-align:justify;">Is an advanced technology company headquartered in Can Tho City. The company specializes in providing AI technology solutions and products to address complex issues and bring value to customers.
+
+          Our company offers a diverse range of AI products, including speech and handwriting recognition systems, information retrieval systems, big data analytics systems, predictive and smart control solutions.
+          
+          Our company also develops applications on platforms such as computers, mobile devices, and IoT devices. We use advanced algorithms to provide the best AI solutions to our customers.
+          
+          With the rapid development of AI technologies, the company continuously updates its products and solutions to meet customer demands. Our products are widely applied in various fields, including healthcare, finance, retail, education, and more. We help our customers increase productivity, improve service quality, and optimize costs.
+          
+          In addition to AI technology products, our company also provides consulting and AI training services for organizations and businesses. We prioritize our customers and are committed to delivering the best solutions to address AI-related issues.
+          
+          With our talented and experienced staff, we are ready to serve our customers 24/7. We believe that we can help our customers achieve success and sustainable development in the age of AI technology.</p>
+     
+      </div>
+      <div class="modal-footer">
+        {% comment %} <button type="button" class="btn btn-secondary" >Close</button> {% endcomment %}
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Got it!!</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
    </body>
 </html>
 <script>
