@@ -1,3 +1,4 @@
+from PIL import Image
 from PIL import Image, ImageDraw
 from rembg import remove
 import cv2 as cv
@@ -94,17 +95,23 @@ def create_color_variations(image_path, num_variations=6):
             # Remove the background from the first image
             # Assuming you have the 'remove' function for background removal
             img = remove(img)
+            img = img.convert('RGB')  # Convert to RGB mode
             img.save(variation_path)
         elif i == 2:
-            overlay_red(img, 128).save(variation_path)
+            overlay_red(img, 128).convert('RGB').save(
+                variation_path)  # Convert to RGB mode
         elif i == 3:
-            overlay_green(img, 128).save(variation_path)
+            overlay_green(img, 128).convert('RGB').save(
+                variation_path)  # Convert to RGB mode
         elif i == 4:
-            overlay_blue(img, 128).save(variation_path)
+            overlay_blue(img, 128).convert('RGB').save(
+                variation_path)  # Convert to RGB mode
         elif i == 5:
-            overlay_yellow(img, 128).save(variation_path)
+            overlay_yellow(img, 128).convert('RGB').save(
+                variation_path)  # Convert to RGB mode
         elif i == 6:
-            overlay_cyan(img, 128).save(variation_path)
+            overlay_cyan(img, 128).convert('RGB').save(
+                variation_path)  # Convert to RGB mode
 
         imgList.append(variation_path)
 

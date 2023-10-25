@@ -326,15 +326,15 @@ def TinhNangLuongMauAllARR(arrIn):
     for indexs, vals in enumerate(arrIn):
 
         ListNangLuongColor = [0] * 7  # tao list gia tri cua 1 mau
-
+        NangLuongNew = 0
         for codeclass in range(7):
 
             NangLuong = int(GetGiaTriNangLuongTheoClass(
                 indexs + 1)[getNameColor(codeclass)])
 
-            NangLuong += NangLuong * vals  # lay nang luong của mau do nhan pixel
+            NangLuongNew += NangLuong * vals  # lay nang luong của mau do nhan pixel
 
-            ListNangLuongColor[codeclass] = {codeclass: NangLuong}
+            ListNangLuongColor[codeclass] = {codeclass: NangLuongNew}
 
         arrInNew[indexs] = [vals, ListNangLuongColor]
 
