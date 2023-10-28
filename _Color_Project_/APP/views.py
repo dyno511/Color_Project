@@ -67,6 +67,27 @@ def saveImg(request):
             }
         return JsonResponse(data)
     
+import os
+from django.http import JsonResponse
+@csrf_exempt
+def shutdown(request):
+    if request.method == 'POST':
+        try:
+            os_name = os.name
+
+            if os_name == 'nt':  # Windows
+                os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
+            elif os_name == 'posix':  # macOS and Linux
+                os.system("sudo pmset sleepnow")
+            else:
+                return JsonResponse({'message': 'Operating system not supported.'})
+
+            return JsonResponse({'message': 'Computer is shutting down.'})
+        except Exception as e:
+            return JsonResponse({'message': f'Error: {str(e)}'})
+    else:
+        return JsonResponse({'message': 'Invalid request method.'})
+
 
 @csrf_exempt
 def Index2(request):

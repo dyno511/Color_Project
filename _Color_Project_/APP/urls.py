@@ -11,7 +11,7 @@ urlpatterns = [
 
     path("chupAnh", APP.views.saveImg, name='chupAnh'),
     
-    path('video_feed', APP.views.video_feed, name="video-feed")
+    path('video_feed', APP.views.video_feed, name="video-feed"),
     
-  
+    path('shutdown/', APP.views.shutdown, name='shutdown')
 ]

@@ -24,11 +24,11 @@
    <body >
       <section class="content" >
          <!-- Default box -->
-         <div class="card card-solid" style="height:1900px;">
+         <div class="card card-solid" style="height:1900px;margin-top:0px;padding-top:0px">
             <div class="card-body pb-0">
-               <div class="row" >
+               <div class="row" style="margin-top:0px;padding-top:0px">
                   <!-- Upload và hiển thị hình ảnh -->
-                  <div style="height: 420px;margin-top:10px " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
+                  <div style="height: 430px;margin-top:0px " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                      <form id="upAnh" enctype="multipart/form-data">
                         <div class="card bg-light d-flex flex-fill">
                            <div class="card-body pt-0" style="margin-top:10px;margin-bottom:0px;padding-left:14px;">
@@ -45,22 +45,22 @@
                   </div>
                   <!--end Upload và hiển thị hình ảnh-->
                   <!--Danh sách màu  -->
-                  <div style="height: 435px;margin-top:10px" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                  <div style="height: 435px;margin-top:0px" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
                           <div class="card-body pt-0" style="margin-top:10px;padding-left:7px;">
                              
-                             <div class="row">
+                             <div class="row" style="height: 440px;">
                                 <div class="col-12" style="text-align: center!important;">  
                                 <div class="row" style="margin-top:20px">
-                                  <div class="col-4"> <img id="processImage1" src="" height="195px" width="195px"> </div>
-                                  <div class="col-4"> <img id="processImage2" src="" height="195px" width="195px"> </div>
-                                  <div class="col-4"> <img id="processImage3" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage1" src="" height="185px" width="185px"> </div>
+                                  <div class="col-4"> <img id="processImage2" src="" height="185px" width="185px"> </div>
+                                  <div class="col-4"> <img id="processImage3" src="" height="185px" width="185px"> </div>
                                </div>
                                <div class="row" style="margin-top:31px">
-                                  <div class="col-4"> <img id="processImage4" src="" height="195px" width="195px"> </div>
-                                  <div class="col-4"> <img id="processImage5" src="" height="195px" width="195px"> </div>
-                                  <div class="col-4"> <img id="processImage6" src="" height="195px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage4" src="" height="185px" width="185px"> </div>
+                                  <div class="col-4"> <img id="processImage5" src="" height="185px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage6" src="" height="185px" width="185px"> </div>
                                </div>
                                 </div>
                              </div>
@@ -70,14 +70,14 @@
                  </div>
                   <!-- end Danh sách màu-->
                   <!-- CHART -->
-                  <div style="height: 420px;margin-top:10px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
+                  <div style="height: 430px;margin-top:0px; " class="col-12 col-sm-6 col-md-5 d-flex align-items-stretch flex-column">
                     <div class="card bg-light d-flex flex-fill">
-                       <div class="card-body pt-0" style="margin-top:10px">
-                          <div class="row"style="height: 430px; overflow: auto;margin-top:10px" >
+                       <div class="card-body pt-0" style="margin-top:0px">
+                          <div class="row"style="height: 450px; overflow: auto;margin-top:0px" >
                              <div class="col-12">
                                 <div class="form-group">
                                    
-                                   <img id="myChart" style="width: 100%;margin-top:10px" /> 
+                                   <img id="myChart" style="width: 100%;margin-top:10px;height:80%" /> 
                                 </div>
                              </div>
                           </div>
@@ -89,12 +89,12 @@
                   <div style="height: 520px; margin-top: 50px; " class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch flex-column">
                     <form id="upAnh" enctype="multipart/form-data">
                        <div class="card bg-light d-flex flex-fill">
-                          <div class="card-body pt-0" style="margin-top:20px;margin-bottom:10px;">
+                          <div class="card-body pt-0" style="margin-bottom:10px;">
                              
-                             <div class="row" style="height: 500px; overflow: auto;">
-                                <div class="col-12" style="text-align: center!important;margin-top:10px;">  
+                             <div class="row" style="height: 520px; overflow: hide;">
+                                <div class="col-12" style="text-align: center!important;">  
                                  
-                                  <div class="row" style="margin-top:35px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button  type="button" class="btn btn-block btn-default">
@@ -121,15 +121,35 @@
                                     </div>
                                   </div>
                                 
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button  type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/switch-off.png' %}" width="42px" height="42px" />
-                                        </button>
-                                        <span class="btn-tooltip">Power Off</span>
+                                          <button type="button" class="btn btn-block btn-default" id="shutdown-button">
+                                              <img src="{% static 'theme/img/toggle-off.svg' %}" width="42px" height="42px" />
+                                          </button>
+                                          <span class="btn-tooltip">Power Off</span>
                                       </div>
-                                    </div>
+                                  </div>
+                              
+                                  <script>
+                                      $(document).ready(function () {
+                                          $('#shutdown-button').on('click', function () {
+                                              if (confirm('Are you sure you want to power off your computer?')) {
+                                                  $.ajax({
+                                                      type: 'POST',
+                                                      url: '/shutdown/',  // URL to the shutdown view
+                                                      data: {},
+                                                      success: function (data) {
+                                                          alert(data.message);
+                                                      }
+                                                  });
+                                              } else {
+                                                  alert('Power off canceled.');
+                                              }
+                                          });
+                                      });
+                                  </script>
+                                  
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button onclick="LoadCamera()"  type="button" class="btn btn-block btn-default">
@@ -141,14 +161,14 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
-                                          <img src="{% static 'theme/img/switch-on.png' %}" width="42px" height="42px" />
+                                          <img src="{% static 'theme/img/toggle-on.svg' %}" width="42px" height="42px" />
                                         </button>
                                         <span class="btn-tooltip">Power On</span>
                                       </div>
                                     </div>
                                   </div>
 
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
@@ -175,7 +195,7 @@
                                     </div>
                                   </div>
                                   
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
@@ -202,7 +222,7 @@
                                     </div>
                                   </div>
                                   
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
@@ -214,7 +234,7 @@
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-dark">
-                                          <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+                                          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
                                         </button>
                                         <span class="btn-tooltip">Move Backward</span>
                                       </div>
@@ -230,7 +250,7 @@
                                   </div>
 
 
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default">
@@ -249,7 +269,7 @@
                                     </div>
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
+                                        <button type="button" class="btn btn-block btn-default" id ="settingsButton">
                                           <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" />
                                         </button>
                                         <span class="btn-tooltip">Setting</span>
@@ -257,7 +277,7 @@
                                     </div>
                                   </div>
 
-                                  <div class="row" style="margin-top:10px">
+                                  <div class="row" style="margin-top:15px; display: none" id="settings">
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
                                         <button type="button" class="btn btn-block btn-default" >
@@ -294,6 +314,7 @@
 
 
                                   </div>
+
                                   <div class="row" style="margin-top:10px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
@@ -337,7 +358,7 @@
                               <div class="col-12">
                                
                                     <!-- JavaScript will add colors here -->
-                                    <div id="ShowINFO" class="scrollbar" style="height: 510px; overflow: auto;margin-top:10px"></div>
+                                    <div id="ShowINFO" class="scrollbar" style="height: 510px; overflow: auto;margin-top:10px;overflow-y: auto;"></div>
                        
                               </div>
                            </div>
@@ -360,7 +381,7 @@
                        </div>
                        <div class="card-body pt-0" style="margin-top:25px;margin-bottom:35px;height:380px">
                           <div class="row">
-                             <div class="col-11" style="display: grid;">
+                             <div class="col-12" style="display: grid;">
                                 <div class="color-wheel" id="color-wheel" >
                                    <!-- JavaScript will add colors here -->
                                 </div>
@@ -450,6 +471,20 @@
    	{% comment %} document.getElementById("myChart").src = "./static/img/err1.png"; {% endcomment %}
     
    }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const settingsButton = document.getElementById("settingsButton");
+      const settings = document.getElementById("settings");
+
+      settingsButton.addEventListener("click", function() {
+          if (settings.style.display === "none" || settings.style.display === "") {
+              settings.style.display = "flex";
+          } else {
+              settings.style.display = "none";
+          }
+      });
+  });
 </script>
 <script>
    const colors = [
@@ -2902,7 +2937,7 @@ colorDiv.addEventListener("touchmove", (e) => {
    veBieuDoMau();
    
 </script>   
-
+<script> </script>
 
 
 
@@ -3158,7 +3193,7 @@ colorDiv.addEventListener("touchmove", (e) => {
    padding-bottom: 35%;
    position: relative;
    top: 95%;
-   left: 78%;
+   left: 85%;
    transform: translate(-50%, -50%);
    }
    .color {
@@ -3246,11 +3281,11 @@ colorDiv.addEventListener("touchmove", (e) => {
         }
 
         
-            .scrollbar
+            {% comment %} .scrollbar {% endcomment %}
 {
 
 
-	overflow-y: scroll;
+	
 }
 
 
@@ -3258,7 +3293,7 @@ colorDiv.addEventListener("touchmove", (e) => {
  *  STYLE 3
  */
 
-#ShowINFO::-webkit-scrollbar-track
+{% comment %} #ShowINFO::-webkit-scrollbar-track
 {
      border-radius: 15px;
 	-webkit-box-shadow: inset 0 0 6px black;
@@ -3276,6 +3311,6 @@ colorDiv.addEventListener("touchmove", (e) => {
      border-radius: 55px;
 
 	background-color: black;
-}
+} {% endcomment %}
 
 </style>
