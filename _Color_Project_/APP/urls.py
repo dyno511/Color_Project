@@ -13,5 +13,9 @@ urlpatterns = [
     
     path('video_feed', APP.views.video_feed, name="video-feed"),
     
-    path('shutdown/', APP.views.shutdown, name='shutdown')
+    path('shutdown/', APP.views.shutdown, name='shutdown'),
+    
+    path('MoDen/', APP.views.MoDen, name='MoDen')
+
+    
 ]

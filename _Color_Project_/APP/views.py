@@ -94,3 +94,7 @@ def Index2(request):
     
     return render(request, 'index2.html')
 
+
+@csrf_exempt
+def MoDen(request):
+    pass 
