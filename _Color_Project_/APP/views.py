@@ -98,3 +98,43 @@ def Index2(request):
 @csrf_exempt
 def MoDen(request):
     pass 
+
+@csrf_exempt
+def TatDen(request):
+    pass 
+
+@csrf_exempt
+def Xoay(request):
+    pass 
+
+@csrf_exempt
+def LenCam(request):
+    pass 
+
+@csrf_exempt
+def XuongCam(request):
+    pass 
+
+@csrf_exempt
+def Tien(request):
+    pass 
+
+@csrf_exempt
+def Lui(request):
+    pass 
+
+@csrf_exempt
+def Trai(request):
+    pass 
+
+@csrf_exempt
+def Phai(request):
+    pass 
+
+@csrf_exempt
+def TangTC(request):
+    pass 
+
+@csrf_exempt
+def GiamTC(request):
+    pass 
