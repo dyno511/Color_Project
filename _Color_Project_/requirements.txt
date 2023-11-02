@@ -12,3 +12,4 @@ django
 datetime
 scikit-learn
 rembg
+pyserial

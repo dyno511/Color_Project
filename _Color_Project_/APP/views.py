@@ -28,7 +28,7 @@ def saveImg(request):
         ListThongtin += '<span class="code"><strong><h3>Color</h3></strong></span>'
         for iPixel in listPixel:
             ListThongtin += '<span class="code">Color' + \
-                str(iPixel) + ' Pixel</span><br>'
+                str(iPixel) + ' Units</span><br>'
             
 
         color_categories = ['RED', 'ORANGE', 'YELLOW',
@@ -46,7 +46,7 @@ def saveImg(request):
                 # Loop through the energy data and filter by the current category
                 for iListColor in category_data:
                     ListThongtin += '<span class="code">Energy ' + \
-                        str(iListColor[0]) + ": " + str(iListColor[2]) + '</span><br>'
+                        str(iListColor[0]+1) + ": " + str(iListColor[2]) + '</span><br>'
 
         # Print or use ListThongtin as needed
 
@@ -90,51 +90,73 @@ def shutdown(request):
 
 
 @csrf_exempt
-def Index2(request):
-    
+def Index2(request):  
     return render(request, 'index2.html')
 
-
+import serial
 @csrf_exempt
 def MoDen(request):
-    pass 
+    data = "0003" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
+    
 
 @csrf_exempt
 def TatDen(request):
-    pass 
+    data = "0002" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def Xoay(request):
-    pass 
+    data = "0001" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def LenCam(request):
-    pass 
+    data = "0006" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def XuongCam(request):
-    pass 
+    data = "0008" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def Tien(request):
-    pass 
+    data = "0007" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def Lui(request):
-    pass 
+    data = "0012" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode()) 
 
 @csrf_exempt
 def Trai(request):
-    pass 
+    data = "0009" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode()) 
 
 @csrf_exempt
 def Phai(request):
-    pass 
+    data = "0010" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def TangTC(request):
-    pass 
+    data = "0013" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
 
 @csrf_exempt
 def GiamTC(request):
-    pass 
+    data = "0011" # lệnh gửi
+    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
+    ser.write(data.encode())
