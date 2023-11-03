@@ -18,7 +18,93 @@
       <link rel="stylesheet" href="{% static 'theme/css/adminlte.min.css'%}">
       <script src="{% static 'theme/plugins/jquery/jquery.min.js' %}"></script>
       <script src="{% static 'theme/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-      
+      <!-- Toastr -->
+      <script src="{% static 'theme/plugins/toastr/toastr.min.js' %}"></script>
+      <script>
+        function Thucthi() {
+          // Lấy danh sách các nút bằng ID
+          const Xoay = document.getElementById("btnXoay");
+          const Toi = document.getElementById("btnToi");
+          const Lui = document.getElementById("btnLui");
+          const Trai = document.getElementById("btnTrai");
+          const Phai = document.getElementById("btnPhai");
+          const Len = document.getElementById("btnLen");
+          const Xuong = document.getElementById("btnXuong");
+          const Moden = document.getElementById("btnMoDen");
+          const TatDen = document.getElementById("btnTatDen");
+          const TangTC = document.getElementById("btnTangTC");
+          const GiamTC = document.getElementById("btnGiamTC");
+          const shut = document.getElementById("shutdown-button");
+          const infobtn = document.getElementById("info");
+          const btnOn = document.getElementById("btnOn");
+          const resetImg = document.getElementById("resetImg");
+          const CaptureImg = document.getElementById("CaptureImg");
+          const video = document.getElementById("video");
+          const settingsButton = document.getElementById("settingsButton");
+          const algorithms = document.getElementById("algorithms");
+          const Language = document.getElementById("Language");
+          const usb = document.getElementById("usb");
+          
+
+          
+        
+          // Gán thuộc tính "disabled" cho các nút
+          Xoay.disabled = true;
+          Toi.disabled = true;
+          Lui.disabled = true;
+          Trai.disabled = true;
+          Phai.disabled = true;
+          Len.disabled = true;
+          Xuong.disabled = true;
+          Moden.disabled = true;
+          TatDen.disabled = true;
+          TangTC.disabled = true;
+          GiamTC.disabled = true;
+          shut.disabled = true;
+          infobtn.disabled = true;
+          resetImg.disabled = true;
+          btnOn.disabled = true;
+          CaptureImg.disabled = true;
+          video.disabled = true;
+          settingsButton.disabled = true;
+          algorithms.disabled = true;
+          Language.disabled = true;
+          usb.disabled = true;
+        
+          // Tạo một hàm để trả lại trạng thái bình thường của các nút
+          function EnableButtons() {
+            Xoay.disabled = false;
+            Toi.disabled = false;
+            Lui.disabled = false;
+            Trai.disabled = false;
+            Phai.disabled = false;
+            Len.disabled = false;
+            Xuong.disabled = false;
+            Moden.disabled = false;
+            TatDen.disabled = false;
+            TangTC.disabled = false;
+            GiamTC.disabled = false;
+            shut.disabled = false;
+            infobtn.disabled = false;
+            resetImg.disabled = false;
+            btnOn.disabled = false;
+            CaptureImg.disabled = false;
+            video.disabled = false;
+            settingsButton.disabled = false;
+            algorithms.disabled = false;
+            Language.disabled = false;
+            usb.disabled = false;
+
+
+
+
+          }
+        
+          // Sử dụng setTimeout để gọi hàm EnableButtons sau 2 giây (2000 milliseconds)
+          setTimeout(EnableButtons, 2000);
+        }
+        </script>
+        
 
    </head>
    <body >
@@ -98,14 +184,15 @@
                                     <!--XOAY VAT THE -->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="Xoay()"  type="button" class="btn btn-block btn-default">
+                                        <button onclick="Xoay()"  type="button" class="btn btn-block btn-default" id="btnXoay">
                                           <img src="{% static 'theme/img/rotate-right-solid.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Rotate Object</span>
+                                        {% comment %} <span class="btn-tooltip">Rotate Object</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function Xoay(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'Xoay' %}",
                                           type: 'POST',
@@ -119,14 +206,15 @@
                                       <!-- tắt đèn-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="TatDen()"  type="button" class="btn btn-block btn-default">
+                                        <button onclick="TatDen()"  type="button" class="btn btn-block btn-default" id="btnTatDen">
                                           <img src="{% static 'theme/img/light-off.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Light off</span>
+                                        {% comment %} <span class="btn-tooltip">Light off</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function TatDen(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'TatDen' %}",
                                           type: 'POST',
@@ -140,14 +228,15 @@
                                     <!-- Mở đèn-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" onclick="MoDen()" class="btn btn-block btn-default">
+                                        <button type="button" onclick="MoDen()" class="btn btn-block btn-default" id="btnMoDen">
                                           <img src="{% static 'theme/img/light-on.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Light On</span>
+                                        {% comment %} <span class="btn-tooltip">Light On</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function MoDen(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'MoDen' %}",
                                           type: 'POST',
@@ -167,13 +256,15 @@
                                           <button type="button" class="btn btn-block btn-default" id="shutdown-button">
                                               <img src="{% static 'theme/img/toggle-off.svg' %}" width="42px" height="42px" />
                                           </button>
-                                          <span class="btn-tooltip">Power Off</span>
+                                          {% comment %} <span class="btn-tooltip">Power Off</span> {% endcomment %}
                                       </div>
                                   </div>
                               
                                   <script>
                                       $(document).ready(function () {
+                                        Thucthi();
                                           $('#shutdown-button').on('click', function () {
+                                            
                                               if (confirm('Are you sure you want to power off your computer?')) {
                                                   $.ajax({
                                                       type: 'POST',
@@ -193,20 +284,20 @@
                                   <!--RESET IMAGE-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="LoadCamera()"  type="button" class="btn btn-block btn-default">
+                                        <button onclick="LoadCamera()"  type="button" class="btn btn-block btn-default" id="resetImg">
                                           <img src="{% static 'theme/img/reset.svg' %}" width="42px" height="42px" />
                                         </button>
-                                        <span class="btn-tooltip">Reset Image</span>
+                                        {% comment %} <span class="btn-tooltip">Reset Image</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <!--END RESET IMAGE-->
                                     <!--MỞ MÁY-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
+                                        <button type="button" class="btn btn-block btn-default" id="btnOn">
                                           <img src="{% static 'theme/img/toggle-on.svg' %}" width="42px" height="42px" />
                                         </button>
-                                        <span class="btn-tooltip">Power On</span>
+                                        {% comment %} <span class="btn-tooltip">Power On</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
@@ -215,14 +306,15 @@
                                     <!--HẠ CAM-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" onclick="XuongCam()" class="btn btn-block btn-default">
+                                        <button type="button" onclick="XuongCam()" class="btn btn-block btn-default" id="btnXuong">
                                           <img src="{% static 'theme/img/downCam.png' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Move Down Camera</span>
+                                        {% comment %} <span class="btn-tooltip">Move Down Camera</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function XuongCam(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'XuongCam' %}",
                                           type: 'POST',
@@ -236,14 +328,15 @@
                                     <!--TIẾN-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" onclick="Tien()" class="btn btn-block btn-dark">
+                                        <button type="button" onclick="Tien()" class="btn btn-block btn-dark" id="btnToi">
                                           <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M182.6 137.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8H288c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-128-128z"/></svg>
                                         </button>
-                                        <span class="btn-tooltip">Move Forward Camera</span>
+                                        {% comment %} <span class="btn-tooltip">Move Forward Camera</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function Tien(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'Tien' %}",
                                           type: 'POST',
@@ -257,15 +350,16 @@
                                     <!--NÂNG CAM-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" onclick="LenCam()" class="btn btn-block btn-default">
+                                        <button type="button" onclick="LenCam()" class="btn btn-block btn-default" id="btnLen">
                                           <img src="{% static 'theme/img/upCam.png' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Move Up Camera</span>
+                                        {% comment %} <span class="btn-tooltip">Move Up Camera</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
                                   <script>
                                     function LenCam(){
+                                      Thucthi();
                                       $.ajax({
                                         url: "{% url 'LenCam' %}",
                                         type: 'POST',
@@ -281,14 +375,15 @@
                                     <!--TRAI-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="Trai()"  type="button" class="btn btn-block btn-dark">
+                                        <button onclick="Trai()"  type="button" class="btn btn-block btn-dark" id="btnTrai">
                                           <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 256 512"><style>svg{fill:#ffffff}</style><path d="M9.4 278.6c-12.5-12.5-12.5-32.8 0-45.3l128-128c9.2-9.2 22.9-11.9 34.9-6.9s19.8 16.6 19.8 29.6l0 256c0 12.9-7.8 24.6-19.8 29.6s-25.7 2.2-34.9-6.9l-128-128z"/></svg>
                                         </button>
-                                        <span class="btn-tooltip">Turn Left</span>
+                                        {% comment %} <span class="btn-tooltip">Turn Left</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function Trai(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'Trai' %}",
                                           type: 'POST',
@@ -303,10 +398,10 @@
                                     <!--CAPTURE IMAGE-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" onclick="ChupAnh()">
+                                        <button type="button" class="btn btn-block btn-default" onclick="ChupAnh()" id="CaptureImg">
                                           <img src="{% static 'theme/img/photo-camera1.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Capture</span>
+                                        {% comment %} <span class="btn-tooltip">Capture</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <!--END CAPTURE IMAGE-->
@@ -314,15 +409,16 @@
                                     <!--RIGHT-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="Phai()" type="button" class="btn btn-block btn-dark">
+                                        <button onclick="Phai()" type="button" class="btn btn-block btn-dark" id="btnPhai">
                                           <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 256 512"><style>svg{fill:#ffffff}</style><path d="M246.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-9.2-9.2-22.9-11.9-34.9-6.9s-19.8 16.6-19.8 29.6l0 256c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9l128-128z"/></svg>
                                         </button>
-                                        <span class="btn-tooltip">Turn Right</span>
+                                        {% comment %} <span class="btn-tooltip">Turn Right</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
                                   <script>
                                     function Phai(){
+                                      Thucthi();
                                       $.ajax({
                                         url: "{% url 'Phai' %}",
                                         type: 'POST',
@@ -338,14 +434,15 @@
                                     <!--GIAM TC-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="GiamTC()" type="button" class="btn btn-block btn-default">
+                                        <button onclick="GiamTC()" type="button" class="btn btn-block btn-default" id="btnGiamTC">
                                           <img src="{% static 'theme/img/lens-down.svg' %}" width="42px" height="42px" />
                                         </button>
-                                        <span class="btn-tooltip">Decrease Focal Length</span>
+                                        {% comment %} <span class="btn-tooltip">Decrease Focal Length</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function GiamTC(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'GiamTC' %}",
                                           type: 'POST',
@@ -360,14 +457,15 @@
                                    <!--LUI-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="Lui()" type="button" class="btn btn-block btn-dark">
+                                        <button onclick="Lui()" type="button" class="btn btn-block btn-dark" id="btnLui">
                                           <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 0 320 512"><style>svg{fill:#ffffff}</style><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
                                         </button>
-                                        <span class="btn-tooltip">Move Backward</span>
+                                        {% comment %} <span class="btn-tooltip">Move Backward</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <script>
                                       function Lui(){
+                                        Thucthi();
                                         $.ajax({
                                           url: "{% url 'Lui' %}",
                                           type: 'POST',
@@ -382,15 +480,16 @@
                                     <!--TANG TC-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button onclick="TangTC()" type="button" class="btn btn-block btn-default">
+                                        <button onclick="TangTC()" type="button" class="btn btn-block btn-default" id="btnTangTC">
                                           <img src="{% static 'theme/img/lens-up.svg' %}" width="42px" height="42px" />
                                         </button>
-                                        <span class="btn-tooltip">Increase Focal Length</span>
+                                        {% comment %} <span class="btn-tooltip">Increase Focal Length</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
                                   <script>
                                     function TangTC(){
+                                      Thucthi();
                                       $.ajax({
                                         url: "{% url 'TangTC' %}",
                                         type: 'POST',
@@ -405,62 +504,76 @@
                                   <div class="row" style="margin-top:15px">
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
+                                        <button type="button" onclick="video()" class="btn btn-block btn-default"  data-toggle="modal" data-target="#modal-sm" id="video">
                                           <img src="{% static 'theme/img/video.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Video Capture</span>
+                                        <script>
+                                          function TangTC(){
+                                            Thucthi();
+                                            
+                                            //$.ajax({
+                                             // url: "{% url 'TangTC' %}",
+                                             // type: 'POST',
+                                             // success: function(data) {
+                                                //  console.log(data);
+                                                  
+                                              //}
+                                          //});
+                                        }
+                                        </script>
+                                        {% comment %} <span class="btn-tooltip">Video Capture</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default">
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm" id="usb">
                                           <img src="{% static 'theme/img/file-export-solid.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Export to files</span>
+                                        {% comment %} <span class="btn-tooltip">Export to files</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" id ="settingsButton">
+                                        <button type="button" class="btn btn-block btn-default" id ="settingsButton" >
                                           <img src="{% static 'theme/img/gear-solid.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Setting</span>
+                                        {% comment %} <span class="btn-tooltip">Setting</span> {% endcomment %}
                                       </div>
                                     </div>
                                   </div>
 
-                                  <div class="row" style="margin-top:15px; display: none" id="settings">
+                                  <div class="row" style="margin-top:15px; display: none" id="settings" >
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm" id="Language">
                                           <img src="{% static 'theme/img/language.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Language</span>
+                                        {% comment %} <span class="btn-tooltip">Language</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm" id="algorithms">
                                           <img src="{% static 'theme/img/Algorithm.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Algorithm</span>
+                                        {% comment %} <span class="btn-tooltip">Algorithm</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm" id="color">
                                           <img src="{% static 'theme/img/color-space.svg' %}" width="36px" height="36px" />
                                         </button>
-                                        <span class="btn-tooltip">Choose ColorSpace</span>
+                                        {% comment %} <span class="btn-tooltip">Choose ColorSpace</span> {% endcomment %}
                                       </div>
                                     </div>
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#CPI" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#CPI" id="info" >
                                           <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" />
                                           
                                         </button>
-                                        <span class="btn-tooltip">Company Informaton</span>
+                                        {% comment %} <span class="btn-tooltip">Company Informaton</span> {% endcomment %}
                                       </div>
                                     </div>
 
@@ -566,6 +679,28 @@
         </div>
       </div>
       <!-- Modal -->
+
+      <div class="modal fade" id="modal-sm" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Alert</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>This feature is still on development</p>
+            </div>
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Got it!!</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
 <div class="modal fade" id="CPI" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -3094,7 +3229,9 @@ colorDiv.addEventListener("touchmove", (e) => {
 
 <script>
    function ChupAnh() {
+      Thucthi();
        startLoadingEffect();
+       
        $.ajax({
            url: "{% url 'chupAnh' %}",
            type: 'POST',

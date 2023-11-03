@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from APP.Code.LiveVideo import stream, save_image, create_color_variations
 from django.http import StreamingHttpResponse
-
+import time
 
 @csrf_exempt
 def video_feed(request):
@@ -96,67 +96,136 @@ def Index2(request):
 import serial
 @csrf_exempt
 def MoDen(request):
-    data = "0003" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "0" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
     
 
 @csrf_exempt
 def TatDen(request):
-    data = "0002" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "0" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def Xoay(request):
-    data = "0001" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "0" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def LenCam(request):
-    data = "0006" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "9" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def XuongCam(request):
-    data = "0008" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "3" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def Tien(request):
-    data = "0007" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "8" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def Lui(request):
-    data = "0012" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode()) 
+    try:
+        data = "2" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def Trai(request):
-    data = "0009" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode()) 
+    try:
+        data = "4" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def Phai(request):
-    data = "0010" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "6" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def TangTC(request):
-    data = "0013" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "0" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
 
 @csrf_exempt
 def GiamTC(request):
-    data = "0011" # lệnh gửi
-    ser = serial.Serial('COM1', 9600) # COM0 -> COMn
-    ser.write(data.encode())
+    try:
+        data = "0" # lệnh gửi
+        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        ser.write(data.encode())
+        time.sleep(1)
+    except: 
+        pass
+    
+    return JsonResponse(200)
+
+
+
