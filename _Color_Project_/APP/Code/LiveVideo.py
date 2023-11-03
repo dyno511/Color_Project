@@ -6,10 +6,11 @@ import os
 from PIL import Image, ImageDraw
 frame = ""
 
+path = "/home/pc/SOFT/Color_Project/_Color_Project_/"
 
 def stream():
     global frame
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
 
     while True:
         ret, frame = cap.read()
@@ -25,14 +26,29 @@ def stream():
                b'Content-Type: image/jpeg\r\n\r\n' + buffer.tobytes() + b'\r\n')
 
 
+# def save_image():
+#     global frame
+#     current_time = datetime.datetime.now()
+#     # Định dạng thời gian thành chuỗi
+#     timestamp = current_time.strftime("%Y%m%d%H%M%S")
+#     directory = f'APP/static/IMGXL/{timestamp}/'
+#     os.makedirs(directory, exist_ok=True)
+#     saved_image = f'{directory}{timestamp}.jpg'
+#     saved_image = path + saved_image
+#     print("saved_image", saved_image)
+#     cv2.imwrite(saved_image, frame)
+#     return saved_image
+
 def save_image():
     global frame
     current_time = datetime.datetime.now()
     # Định dạng thời gian thành chuỗi
     timestamp = current_time.strftime("%Y%m%d%H%M%S")
-    directory = f'APP/static/IMGXL/{timestamp}/'
+    directory = f'APP/static/IMGXL/'
     os.makedirs(directory, exist_ok=True)
     saved_image = f'{directory}{timestamp}.jpg'
+    saved_image = path + saved_image
+    print("saved_image", saved_image)
     cv2.imwrite(saved_image, frame)
     return saved_image
 
@@ -48,7 +64,7 @@ def create_color_variations(image_path, num_variations=6):
     image_directory = os.path.dirname(image_path)
 
     variation_path = os.path.join(image_directory, f'variation_removeBack.jpg')
-
+    print("v", variation_path)
     # Read the image data and pass it to the remove function
     with open(image_path, "rb") as image_file:
         image_data = image_file.read()
