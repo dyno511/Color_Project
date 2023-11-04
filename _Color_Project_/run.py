@@ -3,11 +3,11 @@ import threading
 
 def run_web_thread():
     subprocess.call(
-        ['python', 'manage.py', 'runserver'])
-    
+        ['python3', '/home/pc/SOFT/Color_Project/_Color_Project_/manage.py', 'runserver'])
+
 def run_load_thread():
     subprocess.call(
-        ['python', 'LoadURL.py'])
+        ['python3', '/home/pc/SOFT/Color_Project/_Color_Project_/LoadURL.py'])
     
 
 run_thread = threading.Thread(target=run_web_thread)
