@@ -94,138 +94,70 @@ def Index2(request):
     return render(request, 'index2.html')
 
 import serial
-@csrf_exempt
-def MoDen(request):
+from django.views.decorators.csrf import csrf_exempt
+import time
+# Define a common function to send commands to the serial device
+def send_command(command):
     try:
-        data = "0" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
+        data = command
+        ser = serial.Serial('COM7', 9600)  # Change 'COM7' to the appropriate COM port
         ser.write(data.encode())
         time.sleep(1)
-    except: 
+    except:
         pass
-    
-    return JsonResponse(200)
-    
+
+@csrf_exempt
+def MoDen(request):
+    send_command("0003")  # Send the command to open the device
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def TatDen(request):
-    try:
-        data = "0" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0002")  # Send the command to close the device
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def Xoay(request):
-    try:
-        data = "0" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0")  # Send the command to rotate
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def LenCam(request):
-    try:
-        data = "9" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0006")  # Send the command to move up
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def XuongCam(request):
-    try:
-        data = "3" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0008")  # Send the command to move down
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def Tien(request):
-    try:
-        data = "8" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0007")  # Send the command to move forward
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def Lui(request):
-    try:
-        data = "2" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0012")  # Send the command to move backward
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def Trai(request):
-    try:
-        data = "4" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0009")  # Send the command to move left
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def Phai(request):
-    try:
-        data = "6" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0010")  # Send the command to move right
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def TangTC(request):
-    try:
-        data = "0" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
+    send_command("0")  # Send the command to increase speed
+    return JsonResponse({"status": 200})
 
 @csrf_exempt
 def GiamTC(request):
-    try:
-        data = "0" # lệnh gửi
-        ser = serial.Serial('COM7', 9600) # COM0 -> COMn
-        ser.write(data.encode())
-        time.sleep(1)
-    except: 
-        pass
-    
-    return JsonResponse(200)
-
-
+    send_command("0")  # Send the command to decrease speed
+    return JsonResponse({"status": 200})
 

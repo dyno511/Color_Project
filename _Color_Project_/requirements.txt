@@ -13,3 +13,5 @@ datetime
 scikit-learn
 rembg
 pyserial
+PyQt5
+PyQtWebEngine

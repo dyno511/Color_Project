@@ -3,7 +3,7 @@
    {% load static %}
    <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
       <title>XỬ LÝ MÀU</title>
       <!-- Google Font: Source Sans Pro -->
       {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> {% endcomment %}
@@ -35,7 +35,7 @@
           const TangTC = document.getElementById("btnTangTC");
           const GiamTC = document.getElementById("btnGiamTC");
           const shut = document.getElementById("shutdown-button");
-          const infobtn = document.getElementById("info");
+          const infobtn = document.getElementById("infoCom");
           const btnOn = document.getElementById("btnOn");
           const resetImg = document.getElementById("resetImg");
           const CaptureImg = document.getElementById("CaptureImg");
@@ -104,11 +104,43 @@
           setTimeout(EnableButtons, 2000);
         }
         </script>
-        
+        <style>
+            .notouch {
+              {% comment %} -webkit-user-select: none; {% endcomment %}
+              {% comment %} pointer-events: none; {% endcomment %}
+              user-select: none;
+              -moz-user-select: none;
+              -webkit-user-select: none;
+              oncontextmenu: return false;
+              touch-action: manipulation;
+              user-scalable: no;
+
+            }
+            img {
+              pointer-events: none;
+            }
+
+          
+      </style>
+      <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Chặn sự kiện chuột phải
+        });
+        var myclose = false;
+        document.onkeydown = function (evt) {
+          if (!evt) evt = event;
+          if (evt.altKey && evt.keyCode == 115) {
+            evt.returnValue = false;
+         }
+        };
+        document.addEventListener('wheel', function (e) {
+          e.preventDefault(); // Chặn sự kiện cuộn chuột
+      }, { passive: false });
+    </script>
 
    </head>
    <body >
-      <section class="content" >
+      <section class="content notouch" >
          <!-- Default box -->
          <div class="card card-solid" style="height:1900px;margin-top:0px;padding-top:0px">
             <div class="card-body pb-0">
@@ -120,7 +152,7 @@
                            <div class="card-body pt-0" style="margin-top:10px;margin-bottom:0px;padding-left:14px;">
                               
                               <div class="row" >
-                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo" src="" height="435px" width="435px">
+                                 <div class="col-12" style="text-align: center!important;margin-top:5px">  <img id="ShowVideo"  height="435px" width="435px" >
                                     {% comment %}
                                     <input class="btn btn-block btn-info" style="margin-top:10px;" type="submit" value="Tải lên"> {% endcomment %} 
                                  </div>
@@ -139,7 +171,7 @@
                              <div class="row" style="height: 440px;">
                                 <div class="col-12" style="text-align: center!important;">  
                                 <div class="row" style="margin-top:20px">
-                                  <div class="col-4"> <img id="processImage1" src="" height="185px" width="185px"> </div>
+                                  <div class="col-4"> <img id="processImage1" src="" height="185px" width="185px" > </div>
                                   <div class="col-4"> <img id="processImage2" src="" height="185px" width="185px"> </div>
                                   <div class="col-4"> <img id="processImage3" src="" height="185px" width="185px"> </div>
                                </div>
@@ -251,36 +283,57 @@
                                 
                                   <div class="row" style="margin-top:15px">
                                     <!--TẮT MÁY-->
-                                    <div class="col-4">
-                                      <div class="btn-tooltip-container">
-                                          <button type="button" class="btn btn-block btn-default" id="shutdown-button">
-                                              <img src="{% static 'theme/img/toggle-off.svg' %}" width="42px" height="42px" />
-                                          </button>
-                                          {% comment %} <span class="btn-tooltip">Power Off</span> {% endcomment %}
+                                      <div class="col-4">
+                                        <div class="btn-tooltip-container">
+                                            <button type="button" class="btn btn-block btn-default" id="shutdown-button">
+                                                <img src="{% static 'theme/img/toggle-off.svg' %}" width="42px" height="42px" />
+                                            </button>
+                                            {% comment %} <span class="btn-tooltip">Power Off</span> {% endcomment %}
+                                        </div>
                                       </div>
-                                  </div>
-                              
-                                  <script>
-                                      $(document).ready(function () {
-                                        Thucthi();
-                                          $('#shutdown-button').on('click', function () {
-                                            
-                                              if (confirm('Are you sure you want to power off your computer?')) {
-                                                  $.ajax({
-                                                      type: 'POST',
-                                                      url: '/shutdown/',  // URL to the shutdown view
-                                                      data: {},
-                                                      success: function (data) {
-                                                          alert(data.message);
-                                                      }
-                                                  });
-                                              } else {
-                                                  alert('Power off canceled.');
-                                              }
-                                          });
-                                      });
-                                  </script>
-                                  <!--END TẮT MÁY-->
+
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="shutdownModal" tabindex="-1" role="dialog" aria-labelledby="shutdownModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="shutdownModalLabel">Power Off Confirmation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to power off your computer?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <button type="button" class="btn btn-primary" id="confirmShutdown">Power Off</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+
+                                      <script>
+                                        $(document).ready(function () {
+                                            $('#shutdown-button').on('click', function () {
+                                                $('#shutdownModal').modal('show');
+                                            });
+
+                                            $('#confirmShutdown').on('click', function () {
+                                                $('#shutdownModal').modal('hide');
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/shutdown/',  // URL to the shutdown view
+                                                    data: {},
+                                                    success: function (data) {
+                                                        alert(data.message);
+                                                    }
+                                                });
+                                            });
+                                        });
+                                      </script>
+                                      <!--END TẮT MÁY-->
+
                                   <!--RESET IMAGE-->
                                     <div class="col-4">
                                       <div class="btn-tooltip-container">
@@ -569,7 +622,7 @@
                                     </div>
                                     <div class="col-3">
                                       <div class="btn-tooltip-container">
-                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#CPI" id="info" >
+                                        <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#CPI" id="infoCom" >
                                           <img src="{% static 'theme/img/info-solid.svg' %}" width="36px" height="36px" />
                                           
                                         </button>
@@ -3356,8 +3409,10 @@ colorDiv.addEventListener("touchmove", (e) => {
 </style>
 <script>
    function startLoadingEffect() {
-       document.getElementById("loading-container").style.display = "block";
-       document.getElementById("loading-container").style.backgroundColor = "white";
+    setTimeout(function() {
+      document.getElementById("loading-container").style.display = "block";
+      document.getElementById("loading-container").style.backgroundColor = "white";
+  }, 2000); // 2000 milliseconds (2 seconds)
    }
    
    function stopLoadingEffect() {
