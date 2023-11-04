@@ -4,7 +4,7 @@ import time
 
 from selenium import webdriver
 
- 
+from selenium.webdriver.chrome.service import Service
 
 import time
 
@@ -43,10 +43,13 @@ def LoadgiaHan():
 
     options.add_experimental_option("excludeSwitches",["enable-automation"])
 
+    # Automatically get the path to the appropriate ChromeDriver
+    chrome_driver_path = ChromeDriverManager().install()
+        # Khởi tạo trình duyệt Selenium (chẳng hạn Chrome)
 
-    # Khởi tạo trình duyệt Selenium (chẳng hạn Chrome)
+    # Create the WebDriver instance with the specified ChromeDriver path
+    driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
 
-    driver = webdriver.Chrome(options=options)
 
     # Điều hướng đến trang đăng nhập No-IP
 
