@@ -12,6 +12,7 @@ import warnings
 import colorsys
 
 
+path = "/home/pc/SOFT/Color_Project/_Color_Project_/"
 # Ignore scikit-learn warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="sklearn")
 
@@ -136,10 +137,11 @@ def TaoBieuDo(listColor, title="Chart of Color's Energy", figsize=(12, 7)):
 
     timestamp = time.strftime("%Y%m%d%H%M%S")
 
-    image_dir = os.path.join(os.getcwd(), 'APP', 'static', 'IMGBieuDo')
+    image_dir = os.path.join(path, 'APP', 'static', 'IMGBieuDo')
     os.makedirs(image_dir, exist_ok=True)
+    
     image_path = os.path.join(image_dir, f'BieuDo_{timestamp}.png')
-
+    print("image_path", image_path)
     plt.savefig(image_path)
 
     del values
@@ -156,7 +158,7 @@ def load_csv_datacolors():
     if csv_dataGetNameCode is None:
         csv_dataGetNameCode = {}
 
-        df = pd.read_csv('colors.csv', encoding="utf-8")
+        df = pd.read_csv(path+'colors.csv', encoding="utf-8")
         for index, row in df.iterrows():
             name = row['name']
             class_ = row['class']
@@ -175,7 +177,7 @@ def load_csv_rgbcolors():
     if csv_rgbGetNameCode is None:
         csv_rgbGetNameCode = {}
 
-        df = pd.read_csv('colors.csv', encoding="utf-8")
+        df = pd.read_csv(path+'colors.csv', encoding="utf-8")
         for index, row in df.iterrows():
             name = row['name']
             r = row['r']
@@ -262,7 +264,7 @@ def load_csv_dataListNangLuong():
     csv_data = {}
 
     # Open the CSV file
-    with open('ListNangLuong.csv', 'r') as csvfile:
+    with open(path+'ListNangLuong.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
 
         # Define the columns you want to extract by name
@@ -387,7 +389,7 @@ def VeBieuDo360Cot(data):
     
     timestamp = time.strftime("%Y%m%d%H%M%S")
 
-    image_dir = os.path.join(os.getcwd(), 'APP', 'static', 'IMGBieuDo')
+    image_dir = os.path.join(path, 'APP', 'static', 'IMGBieuDo')
     os.makedirs(image_dir, exist_ok=True)
     image_path = os.path.join(image_dir, f'BieuDo_{timestamp}.png')
 
