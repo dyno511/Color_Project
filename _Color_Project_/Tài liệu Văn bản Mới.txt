@@ -1,0 +1,3 @@
+pip install -r requirments.txt
+https://www.python.org/downloads/release/python-399/
+https://www.techpowerup.com/download/visual-c-redistributable-runtime-package-all-in-one/

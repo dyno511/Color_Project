@@ -4,7 +4,7 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-      <title>XỬ LÝ MÀU</title>
+      <title>Color Energy Calculation</title>
       <!-- Google Font: Source Sans Pro -->
       {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> {% endcomment %}
       <!-- Font Awesome -->
@@ -18,8 +18,9 @@
       <link rel="stylesheet" href="{% static 'theme/css/adminlte.min.css'%}">
       <script src="{% static 'theme/plugins/jquery/jquery.min.js' %}"></script>
       <script src="{% static 'theme/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-      <!-- Toastr -->
-      <script src="{% static 'theme/plugins/toastr/toastr.min.js' %}"></script>
+      {% comment %} <!-- Toastr -->
+      <script src="{% static 'theme/plugins/toastr/toastr.min.js' %}"></script> {% endcomment %}
+
       <script>
         function Thucthi() {
           // Lấy danh sách các nút bằng ID
@@ -136,7 +137,21 @@
         document.addEventListener('wheel', function (e) {
           e.preventDefault(); // Chặn sự kiện cuộn chuột
       }, { passive: false });
+
+      window.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && (event.key === '+' || event.key === '-')) {
+          event.preventDefault();
+        }
+      });
+      // Disable pinch-to-zoom on the entire document
+      document.addEventListener('touchmove', function(event) {
+        if (event.scale !== 1) {
+          event.preventDefault();
+        }
+      });
+      
     </script>
+    
 
    </head>
    <body >
@@ -177,7 +192,7 @@
                                </div>
                                <div class="row" style="margin-top:31px">
                                   <div class="col-4"> <img id="processImage4" src="" height="185px" width="185px"> </div>
-                                  <div class="col-4"> <img id="processImage5" src="" height="185px" width="195px"> </div>
+                                  <div class="col-4"> <img id="processImage5" src="" height="185px" width="185px"> </div>
                                   <div class="col-4"> <img id="processImage6" src="" height="185px" width="185px"> </div>
                                </div>
                                 </div>
