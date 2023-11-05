@@ -2,13 +2,20 @@ import subprocess
 import threading
 
 def run_web_thread():
-    subprocess.call(
-        ['python', 'manage.py', 'runserver'])
-    
+    try:
+        subprocess.call(
+            ['python', 'manage.py', 'runserver'])
+    except:
+        subprocess.call(
+            ['python3', '/home/pc/SOFT/Color_Project/_Color_Project_/manage.py', 'runserver'])
+
 def run_load_thread():
-    subprocess.call(
-        ['python', 'LoadURL.py'])
-    
+    try:
+        subprocess.call(
+            ['python', 'LoadURL.py'])
+    except:
+        subprocess.call(
+            ['python3', '/home/pc/SOFT/Color_Project/_Color_Project_/LoadURL.py'])      
 
 run_thread = threading.Thread(target=run_web_thread)
 run_thread.start()
